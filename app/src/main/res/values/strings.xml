@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">CowHandlerV2</string>
+    <string name="genderLabel">Gender:</string>
+    <string name="speciesLabel">Species:</string>
+    <string name="cowpicture">cowPicture</string>
+    <string name="identifiers">cowID - cowName</string>
+    <string name="title_activity_cow_display">cowDisplay</string>
 </resources>
