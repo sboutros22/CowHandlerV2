@@ -19,7 +19,7 @@ public class NewCow extends AppCompatActivity {
 
     }
 
-    public NewCow(String cowId, String species, String birthdaydDt, String description, RadioButton vac1, RadioButton vac2) {
+    public NewCow(String cowId, String longhorn, int birthdaydDt, String Descriptions, int i, int i1) {
     }
 
     public String getCowId() {

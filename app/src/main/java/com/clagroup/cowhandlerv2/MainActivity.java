@@ -42,42 +42,37 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         db = FirebaseFirestore.getInstance();
+        Map<String, Object> Cow = new HashMap<>();
 
 
-        submitButton.setOnClickListener((V) ) {
-
+        submitButton.setOnClickListener((V) -> {
+/*
             String cowId = CowId.getText().toString();
             String species = Species.getText().toString();
-            String birthdaydDt = BirthDt.getText().toString();
+            int birthdaydDt = BirthDt.getText();
             String Description = Descr.getText().toString();
             int vaccination1 = Vac1.getCheckedRadioButtonId();
             int vaccination2 = Vac2.getCheckedRadioButtonId();
             RadioButton vac1 = findViewById(vaccination1);
             RadioButton vac2 = findViewById(vaccination2);
-
-            NewCow cow = new NewCow(cowId,species,birthdaydDt,Description,vac1,vac2);
+*/
+            NewCow cow = new NewCow("11/9","longhorn",119,"small black spots",1,0);
             uploadcow(cow);
         });
 
     }
 
-    public void uploadcow(User cow){
+    public void uploadcow(NewCow cow){
         db.collection("Cow")
                 .add(cow)
-                .addOnSuccessListener((OnSuccessListener<? super DocumentReference>) {
+                .addOnSuccessListener((OnSuccessListener) (documentReference) -> {
                     Toast.makeText(MainActivity.this, "Added successfully", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(MainActivity.this, MainActivity.class));
                     finish();
                 })
-                .addOnFailureListener((){
+                .addOnFailureListener((e) ->{
                     Toast.makeText(this, "Failure", Toast.LENGTH_SHORT).show();
                 });
-    }
-
-    public void initializeViews(){
-        CowId = findViewById(R.id.CowId);
-
-
     }
 
 
