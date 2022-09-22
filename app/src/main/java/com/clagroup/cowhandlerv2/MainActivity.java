@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
             RadioButton vac1 = findViewById(vaccination1);
             RadioButton vac2 = findViewById(vaccination2);
 */
-            NewCow cow = new NewCow("11/9","longhorn",119,"small black spots",1,0);
+            NewCow cow = new NewCow("11/9","Longhorn",119,"small black spots",1,0);
             uploadcow(cow);
         });
 
