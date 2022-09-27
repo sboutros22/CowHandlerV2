@@ -46,7 +46,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         db = FirebaseFirestore.getInstance();
-        Map<String, Object> Cow = new HashMap<>();
+        Map<String, String> Cow = new HashMap<>();
+       // Map<String, NewCow> cowMap = new HashMap<>();
 
 /*
         submitButton.setOnClickListener((V) -> {
@@ -75,10 +76,10 @@ public class MainActivity extends AppCompatActivity {
         Cow.put("Vax1", "False");
         Cow.put("Vax2", "False");
 
-            /*
+
             NewCow cow = new NewCow("11/9","Longhorn",119,"small black spots",1,0);
-            uploadcow(cow);
-*/
+           // uploadcow(cow);
+
 
             db.collection("Cow")
                     .add(Cow)
