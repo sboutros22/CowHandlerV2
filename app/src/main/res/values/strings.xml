@@ -5,4 +5,9 @@
     <string name="cowpicture">cowPicture</string>
     <string name="identifiers">cowID - cowName</string>
     <string name="title_activity_cow_display">cowDisplay</string>
+    <string name="enterButton">Enter</string>
+    <string name="cowID">"Cow ID: "</string>
+    <string name="cowID_helptext">Enter the Cow ID</string>
+    <string name="species_helpText">Enter the species</string>
+    <string name="age_helpText">Enter the Age</string>
 </resources>
