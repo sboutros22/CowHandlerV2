@@ -3,6 +3,7 @@ package com.clagroup.cowhandlerv2;
 import static android.app.ProgressDialog.show;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -24,7 +25,10 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.auth.User;
@@ -33,7 +37,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
-    private EditText CowId, Species, ParentMId, ParentDId, Descr, BirthDt;
+    private EditText CowId, Species, ParentMId, ParentDId, Descr, BirthDt, Mother, Father, HerdNum, Weight, Age;
     private RadioGroup Vac1, Vac2;
     private Button submitButton;
     private FirebaseFirestore db;
@@ -46,16 +50,21 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         db = FirebaseFirestore.getInstance();
+
         Map<String, String> Cow = new HashMap<>();
        // Map<String, NewCow> cowMap = new HashMap<>();
 
 /*
         submitButton.setOnClickListener((V) -> {
-
             String cowId = CowId.getText().toString();
             String species = Species.getText().toString();
             int birthdaydDt = Integer.parseInt(BirthDt.getText().toString());
+            int weight = Integer.parseInt(Weight.getText().toString());
+            int age = Integer.parseInt(Age.getText().toString());
+            String mother = Mother.getText().toString();
+            String father = Father.getText().toString();
             String Description = Descr.getText().toString();
+            int herdNumber = Integer.parseInt(HerdNum.getText().toString());
             int vaccination1 = Vac1.getCheckedRadioButtonId();
             int vaccination2 = Vac2.getCheckedRadioButtonId();
             RadioButton vac1 = findViewById(vaccination1);
@@ -110,7 +119,17 @@ public class MainActivity extends AppCompatActivity {
                             }
                         }
                     });
+   /*
+            // trying to get the database to show up on phone
+        DocumentReference documentReference = db.collection("Cow").document(String.valueOf(CowId));
+        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
 
+            }
+        });
+
+    */
 
 /*
     public void uploadcow(NewCow cow){
