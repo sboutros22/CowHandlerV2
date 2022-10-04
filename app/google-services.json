@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "256086254972-j6o41sqc9bg074a3b7llkurfvbpn4nuf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.CLAGroup.cowhandler",
+            "certificate_hash": "123765ced8c11686ac83b199a296d75c150cffac"
+          }
+        },
+        {
           "client_id": "256086254972-lfhjrmnt2f88nhihskmn1nqceq8fkkkn.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -43,6 +51,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "256086254972-c46v1f3s3m82pasgso5ibn36brn4kd9v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.clagroup.cowhandlerv2",
+            "certificate_hash": "123765ced8c11686ac83b199a296d75c150cffac"
+          }
+        },
         {
           "client_id": "256086254972-lfhjrmnt2f88nhihskmn1nqceq8fkkkn.apps.googleusercontent.com",
           "client_type": 3

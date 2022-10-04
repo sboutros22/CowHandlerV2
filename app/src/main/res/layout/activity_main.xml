@@ -8,7 +8,6 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
@@ -17,7 +16,7 @@
         android:background="@color/gray_light"
         tools:srcCompat="@drawable/ic_launcher_foreground"
         android:contentDescription="@string/place_holder" />
-
+        
     <Button
         android:id="@+id/btn1"
         android:layout_width="match_parent"
