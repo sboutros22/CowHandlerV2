@@ -40,6 +40,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
+
     private EditText CowId, Species, Gender, Descr, BirthDt, Mother, Father, HerdNum, Weight, Age;
     private RadioGroup Vac1, Vac2;
     private Button submitButton;
@@ -47,18 +48,21 @@ public class MainActivity extends AppCompatActivity {
 
     DatabaseReference databaseReference;
 
+//Create button
+
     Button btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+//Assign button to Create Entry view
         btn = findViewById(R.id.btn1);
-
+//Create button click event
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Link activities
                 Intent intent = new Intent(MainActivity.this,OverviewPage.class);
                 startActivity(intent);
             }
