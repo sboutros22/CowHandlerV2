@@ -46,7 +46,8 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseFirestore db;
 
     DatabaseReference databaseReference;
-
+// This was added to start combing ben's, slota, and mine together
+    // Still need ben's protion to be added.
     Button btn;
 
     @Override
