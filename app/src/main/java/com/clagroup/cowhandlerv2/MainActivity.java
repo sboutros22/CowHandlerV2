@@ -40,7 +40,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
-    private EditText CowId, Species, ParentMId, ParentDId, Descr, BirthDt, Mother, Father, HerdNum, Weight, Age;
+    private EditText CowId, Species, Gender, Descr, BirthDt, Mother, Father, HerdNum, Weight, Age;
     private RadioGroup Vac1, Vac2;
     private Button submitButton;
     private FirebaseFirestore db;
@@ -63,14 +63,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
-}
+
         db = FirebaseFirestore.getInstance();
 
         Map<String, String> Cow = new HashMap<>();
        // Map<String, NewCow> cowMap = new HashMap<>();
 
 /*
+// This will create the database from the inputs the user fills in
         submitButton.setOnClickListener((V) -> {
             String cowId = CowId.getText().toString();
             String species = Species.getText().toString();
@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
         Cow.put("Vax1", "False");
         Cow.put("Vax2", "False");
 
-
+            // This is the current form of the database I just need to alter it and add the new value to make it larger
             NewCow cow = new NewCow("11/9","Longhorn",119,"small black spots",1,0);
            // uploadcow(cow);
 
@@ -148,6 +148,7 @@ public class MainActivity extends AppCompatActivity {
     */
 
 /*
+// This will call the second page on the java that will check to see if it created or not
     public void uploadcow(NewCow cow){
         db.collection("Cow")
                 .add(cow)
@@ -159,6 +160,23 @@ public class MainActivity extends AppCompatActivity {
                 .addOnFailureListener((e) ->{
                     Toast.makeText(this, "Failure", Toast.LENGTH_SHORT).show();
                 });
+    }
+//This will inilize the values and what they should be, essentially it makes a spot for them
+    public void initializeViews() {
+
+        CowId = findViewById(R.id.cowId);
+        Species = findViewById(R.id.Species);
+        Descr = findViewById(R.id.Descr);
+        BirthDt = findViewById(R.id.BirthDt);
+        Mother = findViewById(R.id.Mother);
+        Father = findViewById(R.id.Father);
+        HerdNum = findViewById(R.id.HerdNum);
+        Weight = findViewById(R.id.Weight);
+        Age = findViewById(R.id.Age);
+        Vac1 = findViewById(R.id.Vac1);
+        Vac2 = findViewById(R.id.Vac2);
+        Gender = findViewById(R.id.Gender);
+        submitButton = findViewById(R.id.submitButton);
     }
 
  */
