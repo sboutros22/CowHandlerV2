@@ -2,13 +2,18 @@ package com.clagroup.cowhandlerv2;
 
 import static android.content.ContentValues.TAG;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.IntentSenderRequest;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +23,7 @@ import com.google.android.gms.auth.api.identity.BeginSignInResult;
 import com.google.android.gms.auth.api.identity.Identity;
 import com.google.android.gms.auth.api.identity.SignInClient;
 import com.google.android.gms.auth.api.identity.SignInCredential;
+import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.CommonStatusCodes;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -35,17 +41,17 @@ public class LoginActivity extends AppCompatActivity {
     private SignInClient oneTapClient;
     private BeginSignInRequest signInRequest;
     private BeginSignInRequest signUpRequest;
+    private Button btn;
     private static final int REQ_ONE_TAP = 2;  // Can be any integer unique to the Activity.
     private boolean showOneTapUI = true;
     //get firebase instance
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
+    @SuppressLint("WrongViewCast")
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState,
-                         @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        findViewById(R.id.sign_in_button).setOnClickListener((View.OnClickListener) this);
 
         //auto sign in if already authorized user.
         oneTapClient = Identity.getSignInClient(this);
@@ -80,10 +86,9 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(BeginSignInResult result) {
                         try {
-                            startIntentSenderForResult(
-                                    result.getPendingIntent().getIntentSender(), REQ_ONE_TAP,
-                                    null, 0, 0, 0);
-                        } catch (IntentSender.SendIntentException e) {
+                            loginResultHandler.launch(new IntentSenderRequest.Builder(result.getPendingIntent().getIntentSender()).build());
+                        } catch(android.content.ActivityNotFoundException e){
+                            e.printStackTrace();
                             Log.e(TAG, "Couldn't start One Tap UI: " + e.getLocalizedMessage());
                         }
                     }
@@ -96,8 +101,19 @@ public class LoginActivity extends AppCompatActivity {
                         Log.d(TAG, e.getLocalizedMessage());
                     }
                 });
+        btn = findViewById(R.id.btn1);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
+
+
 
     @Override
     public void onStart() {
@@ -173,4 +189,41 @@ public class LoginActivity extends AppCompatActivity {
                 }
         }
     }
+    private ActivityResultLauncher<IntentSenderRequest> loginResultHandler = registerForActivityResult(new ActivityResultContracts.StartIntentSenderForResult(), result -> {
+        // handle intent result here
+        if (result.getResultCode() == RESULT_OK) Log.d(TAG, "RESULT_OK.");
+        if (result.getResultCode() == RESULT_CANCELED) Log.d(TAG, "RESULT_CANCELED.");
+        if (result.getResultCode() == RESULT_FIRST_USER) Log.d(TAG, "RESULT_FIRST_USER.");
+        try {
+            SignInCredential credential = oneTapClient.getSignInCredentialFromIntent(result.getData());
+            String idToken = credential.getGoogleIdToken();
+            String username = credential.getId();
+            String password = credential.getPassword();
+            if (idToken !=  null) {
+                // Got an ID token from Google. Use it to authenticate
+                // with your backend.
+                Log.d(TAG, "Got ID token.");
+            } else if (password != null) {
+                // Got a saved username and password. Use them to authenticate
+                // with your backend.
+                Log.d(TAG, "Got password.");
+            }
+        } catch (ApiException e) {
+            switch (e.getStatusCode()) {
+                case CommonStatusCodes.CANCELED:
+                    Log.d(TAG, "One-tap dialog was closed.");
+                    // Don't re-prompt the user.
+                    showOneTapUI = false;
+                    break;
+                case CommonStatusCodes.NETWORK_ERROR:
+                    Log.d(TAG, "One-tap encountered a network error.");
+                    // Try again or just ignore.
+                    break;
+                default:
+                    Log.d(TAG, "Couldn't get credential from result."
+                            + e.getLocalizedMessage());
+                    break;
+            }
+        }
+    });
 }

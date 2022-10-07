@@ -18,12 +18,13 @@
         android:contentDescription="@string/place_holder" />
         
     <Button
+
         android:id="@+id/btn1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight=".05"
         android:text="@string/create_new_entry" />
-
+        
     <Button
         android:id="@+id/button"
         android:layout_width="match_parent"
