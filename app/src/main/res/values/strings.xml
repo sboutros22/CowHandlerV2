@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">CowHandlerV2</string>
+
+    <string name="create_new_entry">Create New Entry</string>
+    <string name="view_entry">View Entry</string>
+    <string name="edit_entry">Edit Entry</string>
+    <string name="delete_entry">Delete Entry</string>
+
+    <string name="place_holder">placeholder</string>
 </resources>
