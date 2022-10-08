@@ -26,7 +26,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Link activities
-                Intent intent = new Intent(MainActivity.this,OverviewPage.class);
+                Intent intent = new Intent(MainActivity.this,AddCow.class);
+                startActivity(intent);
+            }
+        });
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Link activities
+                Intent intent = new Intent(MainActivity.this,ViewCow.class);
                 startActivity(intent);
             }
         });
@@ -42,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Link activities
-                Intent intent = new Intent(MainActivity.this,EditEntry.class);
+                Intent intent = new Intent(MainActivity.this,DeleteCow.class);
                 startActivity(intent);
             }
         });
