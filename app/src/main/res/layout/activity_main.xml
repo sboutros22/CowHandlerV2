@@ -8,23 +8,24 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight=".8"
         android:background="@color/gray_light"
-        android:contentDescription="@string/place_holder"
-        tools:srcCompat="@color/gray_light" />
 
+        tools:srcCompat="@drawable/ic_launcher_foreground"
+        android:contentDescription="@string/place_holder" />
+        
     <Button
+
         android:id="@+id/btn1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight=".05"
         android:text="@string/create_new_entry" />
-
+        
     <Button
         android:id="@+id/displayEntryBtn"
         android:layout_width="match_parent"
