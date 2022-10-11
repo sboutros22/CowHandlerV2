@@ -7,4 +7,19 @@
     <string name="delete_entry">Delete Entry</string>
 
     <string name="place_holder">placeholder</string>
+
+    <string name="select_entry_type">Select Entry Type</string>
+    <string name="cow">Cow</string>
+    <string name="herd">Herd</string>
+    <string name="paddock">Paddock</string>
+    <string name="pasture">Pasture</string>
+
+    <string name="input_cow_name">Input Cow Name</string>
+    <string name="input_description">Input Description</string>
+    <string name="gender">Gender</string>
+    <string name="gender_male">Male</string>
+    <string name="gender_female">Female</string>
+    <string name="input_species">Input Species</string>
+
+    <string name="upload_txt">Upload</string>
 </resources>
