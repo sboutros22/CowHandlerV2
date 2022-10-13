@@ -5,20 +5,20 @@ import android.widget.RadioGroup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class NewCow extends AppCompatActivity {
+public class NewCow {
     private String CowId;
     private String Descriptions;
     private String Species;
     private String mother;
     private String father;
     private String birthDate;
-    private RadioButton Vac1;
-    private RadioButton Vac2;
-    private RadioButton gender;
-    private int herdNum, age, weight;
+    private String Vac1;
+    private String Vac2;
+    private String gender;
+    private int  age, weight;
 
 
-    public NewCow(String cowId, String birthdayDt, int age, String species, int weight, RadioButton gender, String description, RadioButton vac1, RadioButton vac2, String mother, String father, int herdNumber) {
+    public NewCow(String cowId, String birthdayDt, int age, String species, int weight, String gender, String description, String vac1, String vac2, String mother, String father) {
         this.CowId = cowId;
         this.Species = species;
         this.Descriptions = description;
@@ -27,13 +27,9 @@ public class NewCow extends AppCompatActivity {
         this.Vac2 = vac2;
         this.age = age;
         this.weight = weight;
-        this.herdNum = herdNumber;
         this.gender = gender;
         this.mother = mother;
         this.father = father;
-    }
-    public NewCow(){
-
     }
 
     public String getCowId() {
@@ -84,36 +80,28 @@ public class NewCow extends AppCompatActivity {
         this.birthDate = birthDate;
     }
 
-    public RadioButton getVac1() {
+    public String getVac1() {
         return Vac1;
     }
 
-    public void setVac1(RadioButton vac1) {
+    public void setVac1(String vac1) {
         Vac1 = vac1;
     }
 
-    public RadioButton getVac2() {
+    public String getVac2() {
         return Vac2;
     }
 
-    public void setVac2(RadioButton vac2) {
+    public void setVac2(String vac2) {
         Vac2 = vac2;
     }
 
-    public RadioButton getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(RadioButton gender) {
+    public void setGender(String gender) {
         this.gender = gender;
-    }
-
-    public int getHerdNum() {
-        return herdNum;
-    }
-
-    public void setHerdNum(int herdNum) {
-        this.herdNum = herdNum;
     }
 
     public int getAge() {
