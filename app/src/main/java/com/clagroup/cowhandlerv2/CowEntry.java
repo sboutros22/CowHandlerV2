@@ -88,32 +88,17 @@ public class CowEntry extends AppCompatActivity {
                         .add(Cow)
                         .addOnSuccessListener(documentReference -> Log.d("Successfully added", "DocumentSnapshot added with ID: " + documentReference.getId()))
                         .addOnFailureListener(e -> Log.w("Failed to add to database", "Error adding document", e));
-                // .addOnSuccessListener((OnSuccessListener) (documentReference) -> {
-                //    Toast.makeText(CowEntry.this, "Added successfully", Toast.LENGTH_SHORT).show();
-                // startActivity(new Intent(CowEntry.this, CowEntry.class));
-                //    finish();
-                //  .addOnFailureListener((e) -> {
-                //     Toast.makeText(CowEntry.this, "Failure", Toast.LENGTH_SHORT).show();
-                //   });
+                       // .addOnSuccessListener((OnSuccessListener) (documentReference) -> {
+                        //    Toast.makeText(CowEntry.this, "Added successfully", Toast.LENGTH_SHORT).show();
+                           // startActivity(new Intent(CowEntry.this, CowEntry.class));
+                        //    finish();
+                        }
+                      //  .addOnFailureListener((e) -> {
+                       //     Toast.makeText(CowEntry.this, "Failure", Toast.LENGTH_SHORT).show();
+                     //   });
 
-            }
         });
-        }
-
-    public void uploadCow(NewCow Cow) {
-
-        db.collection("Cow")
-                .add(Cow)
-                .addOnSuccessListener(documentReference -> Log.d("Successfully added", "DocumentSnapshot added with ID: " + documentReference.getId()))
-                .addOnFailureListener(e -> Log.w("Failed to add to database", "Error adding document", e));
-        // .addOnSuccessListener((OnSuccessListener) (documentReference) -> {
-        //    Toast.makeText(CowEntry.this, "Added successfully", Toast.LENGTH_SHORT).show();
-        // startActivity(new Intent(CowEntry.this, CowEntry.class));
-        //    finish();
     }
-    //  .addOnFailureListener((e) -> {
-    //     Toast.makeText(CowEntry.this, "Failure", Toast.LENGTH_SHORT).show();
-    //   });
     private void initializeViews() {
         CowId = findViewById(R.id.cowId);
         Species = findViewById(R.id.Species);
