@@ -5,27 +5,31 @@ import android.widget.RadioGroup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class NewCow extends AppCompatActivity {
+public class NewCow {
     private String CowId;
     private String Descriptions;
     private String Species;
-    private int birthDate;
-    private int Vac1;
-    private int Vac2;
-    private int herdNum;
+    private String mother;
+    private String father;
+    private String birthDate;
+    private String Vac1;
+    private String Vac2;
+    private String gender;
+    private int  age, weight;
 
-    public NewCow(){
 
-    }
-
-    public NewCow(String cowId, String Species, int birthdaydDt, String Descriptions, int vax1, int vax2) {
+    public NewCow(String cowId, String birthdayDt, int age, String species, int weight, String gender, String description, String vac1, String vac2, String mother, String father) {
         this.CowId = cowId;
-        this.Species = Species;
-        this.Descriptions = Descriptions;
-        this.birthDate = birthdaydDt;
-        this.Vac1 = vax1;
-        this.Vac2 = vax2;
-
+        this.Species = species;
+        this.Descriptions = description;
+        this.birthDate = birthdayDt;
+        this.Vac1 = vac1;
+        this.Vac2 = vac2;
+        this.age = age;
+        this.weight = weight;
+        this.gender = gender;
+        this.mother = mother;
+        this.father = father;
     }
 
     public String getCowId() {
@@ -52,35 +56,68 @@ public class NewCow extends AppCompatActivity {
         Species = species;
     }
 
-    public int getBirthDate() {
+    public String getMother() {
+        return mother;
+    }
+
+    public void setMother(String mother) {
+        this.mother = mother;
+    }
+
+    public String getFather() {
+        return father;
+    }
+
+    public void setFather(String father) {
+        this.father = father;
+    }
+
+    public String getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(int birthDate) {
+    public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
 
-    public int getVac1() {
+    public String getVac1() {
         return Vac1;
     }
 
-    public void setVac1(int vac1) {
+    public void setVac1(String vac1) {
         Vac1 = vac1;
     }
 
-    public int getVac2() {
+    public String getVac2() {
         return Vac2;
     }
 
-    public void setVac2(int vac2) {
+    public void setVac2(String vac2) {
         Vac2 = vac2;
     }
 
-    public int getHerdNum() {
-        return herdNum;
+    public String getGender() {
+        return gender;
     }
 
-    public void setHerdNum(int herdNum) {
-        this.herdNum = herdNum;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
+
 }
