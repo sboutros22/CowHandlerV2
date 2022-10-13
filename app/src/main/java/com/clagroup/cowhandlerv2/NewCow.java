@@ -100,11 +100,9 @@ public class NewCow {
         return gender;
     }
 
-    public void setGender(String
-                                  gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
-
 
     public int getAge() {
         return age;
