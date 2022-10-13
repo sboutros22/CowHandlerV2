@@ -25,6 +25,8 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
@@ -41,15 +43,26 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
+    private EditText CowId, Species, Gender, Descr, BirthDt, Mother, Father, HerdNum, Weight, Age;
+    private RadioGroup Vac1, Vac2;
+    private Button submitButton;
+    private FirebaseFirestore db;
+    public FirebaseUser currentUser;
 
-    //Create button
-    Button btn, btn2, btn3, btn4;
+    DatabaseReference databaseReference;
+
+//Create button
+    Button btn, btn2,btn3,btn4;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //get firebase user
+        currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
 //Assign button to Create Entry view
         btn = findViewById(R.id.btn1);
         btn2 = findViewById(R.id.displayEntryBtn);
@@ -57,12 +70,11 @@ public class MainActivity extends AppCompatActivity {
         btn4 = findViewById(R.id.deleteEntryBtn);
 
 //Create button click event
-        //
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Link activities
-                Intent intent = new Intent(MainActivity.this, AddCow.class);
+                Intent intent = new Intent(MainActivity.this,AddCow.class);
                 startActivity(intent);
             }
         });
@@ -70,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Link activities
-                Intent intent = new Intent(MainActivity.this, ViewCow.class);
+                Intent intent = new Intent(MainActivity.this,ViewCow.class);
                 startActivity(intent);
             }
         });
@@ -78,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Link activities
-                Intent intent = new Intent(MainActivity.this, EditEntry.class);
+                Intent intent = new Intent(MainActivity.this,EditEntry.class);
                 startActivity(intent);
             }
         });
@@ -86,43 +98,36 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Link activities
-                Intent intent = new Intent(MainActivity.this, DeleteCow.class);
+                Intent intent = new Intent(MainActivity.this,DeleteCow.class);
                 startActivity(intent);
             }
         });
 
-   /*
-            // trying to get the database to show up on phone
-        DocumentReference documentReference = db.collection("Cow").document(String.valueOf(CowId));
-        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
-            @Override
-            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
 
-            }
-        });
+                //Cow uploading shifted to enter cow page.
 
-    */
+
+            // This is the current form of the database I just need to alter it and add the new value to make it larger
+            //NewCow cow = new NewCow("11/9","Longhorn",119,"small black spots",1,0);
+           // uploadcow(cow);
 
 /*
-// This will call the second page on the java that will check to see if it created or not
-            public void uploadcow (NewCow cow){
-                db.collection("Cow")
-                        .add(cow)
-                        .addOnSuccessListener((OnSuccessListener) (documentReference) -> {
-                            Toast.makeText(MainActivity.this, "Added successfully", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(MainActivity.this, MainActivity.class));
-                            finish();
-                        })
-                        .addOnFailureListener((e) -> {
-                            Toast.makeText(this, "Failure", Toast.LENGTH_SHORT).show();
-                        });
-            }
-    */
+            db.collection("Cow")
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    Log.d("successful pull", document.getId() + " => " + document.getData());
+                                }
+                            } else {
+                                Log.w("failed pull", "Error getting documents.", task.getException());
+                            }
+                        }
+                    });
+                    */
     }
+
 }
-
-
-
-
-
 
