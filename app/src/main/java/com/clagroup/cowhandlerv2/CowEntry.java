@@ -29,7 +29,6 @@ public class CowEntry extends AppCompatActivity {
     public FirebaseUser currentUser;
     private EditText CowId, Species, Descr, BirthDt, Mother, Father, HerdNum, Weight, Age;
     private RadioGroup Vac1,Vac2, Gender;
-    private Button submitButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +44,6 @@ public class CowEntry extends AppCompatActivity {
             public void onClick(View view) {
                 currentUser = FirebaseAuth.getInstance().getCurrentUser();
                 db = FirebaseFirestore.getInstance();
-                String uid = currentUser.getUid();
 
                 String cowId = CowId.getText().toString();
                 String species = Species.getText().toString();
@@ -67,20 +65,21 @@ public class CowEntry extends AppCompatActivity {
                 Log.d("Submit button check", "did this work at all");
 
                 NewCow Cow = new NewCow(cowId, birthdayDt, age, species, weight, sex, Description, vac1, vac2, mother, father);
-                uploadCow(Cow);
+                uploadCow(Cow, cowId);
             }
 
         });
 
     }
 
-    public void uploadCow(NewCow Cow) {
-        db.collection("Test").document("Third Cow")
+    public void uploadCow(NewCow Cow, String cowId) {
+        db.collection(currentUser.getDisplayName()).document(cowId)
                 .set(Cow)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Log.d("Cow added Successfully", "DocumentSnapshot successfully written!");;
+                        startActivity(new Intent(CowEntry.this, MainActivity.class));
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -104,6 +103,5 @@ public class CowEntry extends AppCompatActivity {
         Vac1 = findViewById(R.id.Vac1);
         Vac2 = findViewById(R.id.Vac2);
         Gender = findViewById(R.id.Gender);
-        submitButton = findViewById(R.id.submitButton);
     }
 }
