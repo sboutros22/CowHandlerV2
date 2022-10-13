@@ -38,7 +38,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".OverviewPage" />
-        <activity android:name=".LoginPage" />
+        <activity android:name=".LoginActivity" />
     </application>
 
 </manifest>

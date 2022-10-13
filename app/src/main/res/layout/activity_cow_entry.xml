@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".CowEntry" >
-
+    tools:context=".CowEntry">
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
@@ -14,15 +17,136 @@
         android:text="@string/cow" />
 
     <EditText
-        android:id="@+id/editName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/input_cow_name"
-        android:inputType="text"
-        android:minHeight="48dp" />
-
+        android:hint="CowID"
+        android:id="@+id/cowId"
+        android:inputType="text"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Species"
+        android:id="@+id/Species"
+        android:inputType="text"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Weight of Cow"
+        android:id="@+id/Weight"
+        android:inputType="text"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Age of Cow"
+        android:id="@+id/Age"
+        android:inputType="text"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Gender"
+        android:textSize ="16sp"
+        android:textColor="#FFF"
+        android:textStyle="bold"
+        android:layout_margin="8dp"/>
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal"
+        android:id="@+id/Gender">
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='Male'
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="8dp"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='Female'/>
+    </RadioGroup>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Description of cow"
+        android:id="@+id/Descr"
+        android:inputType="text"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Birth date"
+        android:id="@+id/BirthDt"
+        android:inputType="text"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Mother ID"
+        android:id="@+id/Mother"
+        android:inputType="text"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Father ID"
+        android:id="@+id/Father"
+        android:inputType="text"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Vaccination status for first dose"
+        android:textSize ="16sp"
+        android:textColor="#FFF"
+        android:textStyle="bold"
+        android:layout_margin="8dp"/>
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal"
+        android:id="@+id/Vac1">
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='Yes'
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="8dp"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='No'/>
+    </RadioGroup>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Vaccination status for second dose"
+        android:textSize ="16sp"
+        android:textColor="#FFF"
+        android:textStyle="bold"
+        android:layout_margin="8dp"/>
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal"
+        android:id="@+id/Vac2">
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='Yes'
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="8dp"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='No'/>
+    </RadioGroup>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Herd Number"
+        android:id="@+id/HerdNum"
+        android:inputType="text"/>
     <Button
-        android:id="@+id/uploadButton"
+        android:id="@+id/submitButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/upload_txt"
@@ -35,42 +159,5 @@
         android:contentDescription="@string/cow"
         app:srcCompat="@drawable/ic_launcher_background" />
 
-    <EditText
-        android:id="@+id/addDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/input_description"
-        android:inputType="text"
-        android:minHeight="48dp" />
-
-    <TextView
-        android:id="@+id/genderInput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/gender" />
-
-    <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <RadioButton
-            android:id="@+id/maleInput"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/gender_male" />
-
-        <RadioButton
-            android:id="@+id/femaleInput"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/gender_female" />
-
-    </RadioGroup>
-
-    <TextView
-        android:id="@+id/speciesText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/input_species" />
-
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>
