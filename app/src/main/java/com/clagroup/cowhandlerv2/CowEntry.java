@@ -27,7 +27,7 @@ public class CowEntry extends AppCompatActivity {
     private Button btn;
     private FirebaseFirestore db;
     public FirebaseUser currentUser;
-    private EditText CowId, Species, Descr, BirthDt, Mother, Father, HerdNum, Weight, Age;
+    private EditText CowId, Species, Descr, BirthDt, Mother, Father, Weight, Age;
     private RadioGroup Vac1,Vac2, Gender;
 
     @Override
@@ -97,7 +97,6 @@ public class CowEntry extends AppCompatActivity {
         BirthDt = findViewById(R.id.BirthDt);
         Mother = findViewById(R.id.Mother);
         Father = findViewById(R.id.Father);
-        HerdNum = findViewById(R.id.HerdNum);
         Weight = findViewById(R.id.Weight);
         Age = findViewById(R.id.Age);
         Vac1 = findViewById(R.id.Vac1);
