@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
     DatabaseReference databaseReference;
 
-    //Create button
+//Create button
     Button btn, btn2,btn3,btn4;
 
 
@@ -104,12 +104,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        //Cow uploading shifted to enter cow page.
+                //Cow uploading shifted to enter cow page.
 
 
-        // This is the current form of the database I just need to alter it and add the new value to make it larger
-        //NewCow cow = new NewCow("11/9","Longhorn",119,"small black spots",1,0);
-        // uploadcow(cow);
+            // This is the current form of the database I just need to alter it and add the new value to make it larger
+            //NewCow cow = new NewCow("11/9","Longhorn",119,"small black spots",1,0);
+           // uploadcow(cow);
 
 /*
             db.collection("Cow")
@@ -130,9 +130,4 @@ public class MainActivity extends AppCompatActivity {
     }
 
 }
-
-
-
-
-
 
