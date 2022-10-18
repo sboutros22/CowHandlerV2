@@ -21,7 +21,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
+/*
+This class handles the process of getting manual user input
+for a cow within the Activity
 
+Main -> AddCow -> CowEntry
+ */
 public class CowEntry extends AppCompatActivity {
 
     private Button btn;
@@ -78,7 +83,7 @@ public class CowEntry extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Log.d("Cow added Successfully", "DocumentSnapshot successfully written!");;
+                        Log.d("Cow added Successfully", "DocumentSnapshot successfully written!");
                         startActivity(new Intent(CowEntry.this, MainActivity.class));
                     }
                 })

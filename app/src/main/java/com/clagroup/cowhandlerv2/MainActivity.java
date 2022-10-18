@@ -40,7 +40,9 @@ import com.google.firebase.firestore.auth.User;
 
 import java.util.HashMap;
 import java.util.Map;
-
+/*
+This class controls the landing page that the user arrives to after signing in.
+ */
 public class MainActivity extends AppCompatActivity {
 
     private EditText CowId, Species, Gender, Descr, BirthDt, Mother, Father, HerdNum, Weight, Age;

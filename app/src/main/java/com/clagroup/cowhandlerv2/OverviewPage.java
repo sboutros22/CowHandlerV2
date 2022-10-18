@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-//This page will serve as the
+//This page was to serve as a landing page but has only been used for testing
 public class OverviewPage extends Activity {
 
     public FirebaseUser currentUser;

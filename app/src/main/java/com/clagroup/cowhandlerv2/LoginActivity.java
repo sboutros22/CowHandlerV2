@@ -36,6 +36,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+/*
+This class implements the process of signing in or signing up via Google auth within the activity login layout
+ */
+
 public class LoginActivity extends AppCompatActivity {
 
     private SignInClient oneTapClient;
