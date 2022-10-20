@@ -14,6 +14,13 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class DeleteCow extends AppCompatActivity {
@@ -39,7 +46,7 @@ public class DeleteCow extends AppCompatActivity {
 
                 String cowId = CowId.getText().toString();
 
-                //deleteCow(cowId);
+                deleteCow(cowId);
 
 
             }
@@ -47,27 +54,23 @@ public class DeleteCow extends AppCompatActivity {
 
 
     }
-/*
+
     public void deleteCow(String cowId) {
         db.collection(currentUser.getDisplayName()).document(cowId)
-                .set(Cow)
+                .delete()
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Log.d("Cow added Successfully", "DocumentSnapshot successfully written!");;
-                        startActivity(new Intent(CowEntry.this, MainActivity.class));
+                        Log.d("Cow " + cowId + " deleted", "DocumentSnapshot successfully deleted!");
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Log.w("Failed to add to database", "Error adding document", e);
+                        Log.w("Failed to delete cow", "Error deleting document", e);
                     }
                 });
-
     }
-
- */
 
     private void initializeViews() {
         CowId = findViewById(R.id.cowId);

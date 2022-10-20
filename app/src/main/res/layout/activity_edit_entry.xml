@@ -4,6 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".EditEntry">
+
+    <Spinner
+        android:id="@+id/updateField"
+        android:layout_width="match_parent"
+        android:layout_height="882dp"
+        android:layout_weight="1"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown" />
+
+    <EditText
+        android:id="@+id/UpdateValue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Update Value"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/deleteButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Delete Cow Entry"
+        app:icon="@android:drawable/stat_sys_upload" />
 
 </LinearLayout>
