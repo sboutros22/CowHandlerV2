@@ -6,4 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".DeleteCow">
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Cow to Delete"
+        android:id="@+id/Delete"
+        android:inputType="text"/>
+
+    <Button
+        android:id="@+id/deleteButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Delete Cow Entry"
+        app:icon="@android:drawable/stat_sys_upload" />
+
 </LinearLayout>
