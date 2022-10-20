@@ -21,25 +21,29 @@
             android:layout_height="wrap_content"
             android:hint="CowID"
             android:id="@+id/cowId"
-            android:inputType="text"/>
+            android:inputType="text"
+            android:digits="0123456789qwertzuiopasdfghjklyxcvbnm" />
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Species"
             android:id="@+id/Species"
-            android:inputType="text"/>
+            android:inputType="text"
+            android:digits="qwertzuiopasdfghjklyxcvbnm"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Weight of Cow"
             android:id="@+id/Weight"
-            android:inputType="text"/>
+            android:inputType="text"
+            android:digits="0123456789. qwertzuiopasdfghjklyxcvbnm"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Age of Cow"
             android:id="@+id/Age"
-            android:inputType="text"/>
+            android:inputType="text"
+            android:digits="0123456789"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -70,25 +74,28 @@
             android:layout_height="wrap_content"
             android:hint="Description of cow"
             android:id="@+id/Descr"
-            android:inputType="text"/>
+            android:inputType="text"
+            android:digits="0123456789*, qwertzuiopasdfghjklyxcvbnm/"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Birth date"
+            android:hint="Birth date MM/YY"
             android:id="@+id/BirthDt"
-            android:inputType="text"/>
+            android:inputType="date"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Mother ID"
             android:id="@+id/Mother"
-            android:inputType="text"/>
+            android:inputType="text"
+            android:digits="0123456789qwertzuiopasdfghjklyxcvbnm/"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Father ID"
             android:id="@+id/Father"
-            android:inputType="text"/>
+            android:inputType="text"
+            android:digits="0123456789qwertzuiopasdfghjklyxcvbnm/"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
