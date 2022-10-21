@@ -102,31 +102,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-                //Cow uploading shifted to enter cow page.
-
-
-            // This is the current form of the database I just need to alter it and add the new value to make it larger
-            //NewCow cow = new NewCow("11/9","Longhorn",119,"small black spots",1,0);
-           // uploadcow(cow);
-
-/*
-            db.collection("Cow")
-                    .get()
-                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                            if (task.isSuccessful()) {
-                                for (QueryDocumentSnapshot document : task.getResult()) {
-                                    Log.d("successful pull", document.getId() + " => " + document.getData());
-                                }
-                            } else {
-                                Log.w("failed pull", "Error getting documents.", task.getException());
-                            }
-                        }
-                    });
-                    */
     }
 
 }
