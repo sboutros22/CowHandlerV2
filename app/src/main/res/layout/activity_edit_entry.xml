@@ -1,32 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".EditEntry">
 
     <Spinner
         android:id="@+id/updateField"
-        android:layout_width="match_parent"
-        android:layout_height="882dp"
+        android:layout_width="322dp"
+        android:layout_height="78dp"
         android:layout_weight="1"
         android:background="@android:drawable/btn_dropdown"
-        android:spinnerMode="dropdown" />
+        android:spinnerMode="dropdown"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/UpdateValue"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/updateValue"
+        android:layout_width="241dp"
+        android:layout_height="50dp"
         android:hint="Update Value"
-        android:inputType="text" />
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/editButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/updateField" />
 
     <Button
-        android:id="@+id/deleteButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/editButton"
+        android:layout_width="267dp"
+        android:layout_height="42dp"
+        android:layout_marginBottom="60dp"
         android:text="Delete Cow Entry"
-        app:icon="@android:drawable/stat_sys_upload" />
+        app:icon="@android:drawable/stat_sys_upload"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/updateField" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

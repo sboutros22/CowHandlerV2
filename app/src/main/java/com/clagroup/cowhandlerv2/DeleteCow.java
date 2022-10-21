@@ -62,6 +62,7 @@ public class DeleteCow extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Log.d("Cow " + cowId + " deleted", "DocumentSnapshot successfully deleted!");
+                        startActivity(new Intent(DeleteCow.this, MainActivity.class));
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -73,6 +74,6 @@ public class DeleteCow extends AppCompatActivity {
     }
 
     private void initializeViews() {
-        CowId = findViewById(R.id.cowId);
+        CowId = findViewById(R.id.Delete);
     }
 }
