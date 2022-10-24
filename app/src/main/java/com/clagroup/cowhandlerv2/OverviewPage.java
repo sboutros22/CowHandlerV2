@@ -18,9 +18,5 @@ public class OverviewPage extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.overview_page);
-//MORE PLACEHOLDER CODE FOR PLAYING AROUND WITH GETTING LOGIN INFO
-        //currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        //String usrName = currentUser.getDisplayName();
-//Log.d("Secret Value", secretValue.toString());
     }
 }
