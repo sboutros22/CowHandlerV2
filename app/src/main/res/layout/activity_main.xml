@@ -7,8 +7,8 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
+    <TextView
+        android:id="@+id/credView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight=".8"
@@ -25,7 +25,8 @@
         android:layout_weight=".05"
         android:text="@string/create_new_entry"
         android:textColor="@color/sail_color"
-        android:backgroundTint="@color/green_light"
+        app:backgroundTint="@color/green_light"
+        app:rippleColor="@color/sail_color"
         app:strokeColor="@color/sail_color"
         />
 
@@ -37,7 +38,8 @@
         android:layout_weight=".05"
         android:text="@string/view_entry"
         android:textColor="@color/sail_color"
-        android:backgroundTint="@color/green_light"
+        app:backgroundTint="@color/green_light"
+        app:rippleColor="@color/sail_color"
         app:strokeColor="@color/sail_color"
         />
 
@@ -49,7 +51,8 @@
         android:layout_weight=".05"
         android:text="@string/edit_entry"
         android:textColor="@color/sail_color"
-        android:backgroundTint="@color/green_light"
+        app:backgroundTint="@color/green_light"
+        app:rippleColor="@color/sail_color"
         app:strokeColor="@color/sail_color"
         />
 
@@ -61,7 +64,8 @@
         android:layout_weight=".05"
         android:text="@string/delete_entry"
         android:textColor="@color/black"
-        android:backgroundTint="@color/orange_light"
+        app:backgroundTint="@color/orange_light"
+        app:rippleColor="@color/sail_color"
         app:strokeColor="@color/orange_dark"
         />
 
