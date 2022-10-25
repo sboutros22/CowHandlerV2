@@ -65,13 +65,17 @@ public class ViewCow extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
+                        String results = "";
                        TextView cowInfo = (TextView) findViewById(R.id.results);
                        Map<String, Object> mapSetUp = new HashMap<String, Object>();
                        mapSetUp = document.getData();
                        for(Map.Entry<String, Object> entry : mapSetUp.entrySet()) {
                            String key = entry.getKey();
-                           NewCow value = (NewCow)entry.getValue();
+                           String value = document.get(key).toString();
+                           Log.d("successfully fetched cow","Key: "+ key + "  Value: " + value);
+                           results += key + ": " + value + "\n";
                        }
+                       cowInfo.setText(results);
 
 
                         Log.d("Successfully pull", "Successfully pulled data to phone:" + document.getData());
