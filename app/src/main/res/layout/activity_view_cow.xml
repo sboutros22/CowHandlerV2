@@ -37,5 +37,11 @@
         android:id="@+id/results"
 
         />
+    <ImageView
+        android:id="@+id/cowImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/cow"
+        app:srcCompat="@drawable/ic_launcher_background" />
 </LinearLayout>
 </ScrollView>

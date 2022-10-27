@@ -15,8 +15,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -26,7 +28,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 
 public class DeleteCow extends AppCompatActivity {
@@ -35,6 +40,7 @@ public class DeleteCow extends AppCompatActivity {
     private FirebaseFirestore db;
     public FirebaseUser currentUser;
     private EditText CowId;
+    private FirebaseStorage storage = FirebaseStorage.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +60,7 @@ public class DeleteCow extends AppCompatActivity {
             Log.d("Does viewCow run", "why wont this work?");
 
         }
+
 //Create button click event
         btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -72,6 +79,41 @@ public class DeleteCow extends AppCompatActivity {
     }
 
     public void deleteCow(String cowId) {
+        DocumentReference docRef = db.collection(currentUser.getDisplayName()).document(cowId);
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        String picPath = (String) document.get("pathToCowPicture");
+                        StorageReference storageRef = storage.getReference();
+                        storageRef.child(picPath).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Log.d("Photo deletion", "successfully deleted picture.", task.getException());
+                                deleteCowInfo(cowId);
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception exception) {
+                                deleteCowInfo(cowId);
+                                Log.w("Photo deletion", "Error deleting picture.", task.getException());
+                            }
+                        });
+
+                    } else {
+                        Log.d("Photo deletion", "No documents with id");
+                    }
+                }
+                else {
+                    Log.w("Photo deletion", "Error getting document.", task.getException());
+                }
+            }
+        });
+    }
+
+    public void deleteCowInfo(String cowId) {
         db.collection(currentUser.getDisplayName()).document(cowId)
                 .delete()
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -88,6 +130,8 @@ public class DeleteCow extends AppCompatActivity {
                     }
                 });
     }
+
+
 
     private void initializeViews() {
         CowId = findViewById(R.id.Delete);
