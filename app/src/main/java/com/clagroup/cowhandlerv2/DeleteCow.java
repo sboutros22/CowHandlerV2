@@ -44,6 +44,16 @@ public class DeleteCow extends AppCompatActivity {
         initializeViews();
 
         btn = findViewById(R.id.deleteButton);
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            currentUser = FirebaseAuth.getInstance().getCurrentUser();
+            db = FirebaseFirestore.getInstance();
+            String value = extras.getString("cowBtnId");
+            Log.d("will this work", "why wont this work?");
+            deleteCow(value);
+            Log.d("Does viewCow run", "why wont this work?");
+
+        }
 //Create button click event
         btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
