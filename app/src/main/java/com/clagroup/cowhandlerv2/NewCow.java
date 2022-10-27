@@ -4,10 +4,13 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+/*
+This class handles the process of getting the user input from
+CowEntry into the database
+ */
 public class NewCow {
     private String CowId;
-    private String Descriptions;
+    private String Description;
     private String Species;
     private String mother;
     private String father;
@@ -21,7 +24,7 @@ public class NewCow {
     public NewCow(String cowId, String birthdayDt, int age, String species, int weight, String gender, String description, String vac1, String vac2, String mother, String father) {
         this.CowId = cowId;
         this.Species = species;
-        this.Descriptions = description;
+        this.Description = description;
         this.birthDate = birthdayDt;
         this.Vac1 = vac1;
         this.Vac2 = vac2;
@@ -40,12 +43,12 @@ public class NewCow {
         CowId = cowId;
     }
 
-    public String getDescriptions() {
-        return Descriptions;
+    public String getDescription() {
+        return Description;
     }
 
-    public void setDescriptions(String descriptions) {
-        Descriptions = descriptions;
+    public void setDescription(String description) {
+        Description = description;
     }
 
     public String getSpecies() {

@@ -6,7 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+/*
+After the user clicks the "add" button on the landing page, this
+activity will prompt the user available options.
 
+Currently only the cow functionality is in this class
+ */
 public class AddCow extends AppCompatActivity {
 
     Button cowBtn;
