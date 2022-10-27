@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
     DatabaseReference databaseReference;
 
 //Create button
-    Button btn, btn2,btn3,btn4;
+    Button btn, btn2,btn3,btn4,btn5;
 
 
     @Override
@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         btn2 = findViewById(R.id.displayEntryBtn);
         btn3 = findViewById(R.id.editEntryBtn);
         btn4 = findViewById(R.id.deleteEntryBtn);
+        btn5 = findViewById(R.id.overviewBtn);
 
 //Create button click event
         btn.setOnClickListener(new View.OnClickListener() {
@@ -99,6 +100,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //Link activities
                 Intent intent = new Intent(MainActivity.this,DeleteCow.class);
+                startActivity(intent);
+            }
+        });
+
+        btn5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Link activities
+                Intent intent = new Intent(MainActivity.this,OverviewPage.class);
                 startActivity(intent);
             }
         });

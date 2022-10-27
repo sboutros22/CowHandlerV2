@@ -25,6 +25,13 @@
         android:layout_height="wrap_content"
         android:layout_weight=".05"
         android:text="@string/create_new_entry" />
+    <Button
+
+        android:id="@+id/overviewBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight=".05"
+        android:text="@string/View_All_Cows" />
         
     <Button
         android:id="@+id/displayEntryBtn"

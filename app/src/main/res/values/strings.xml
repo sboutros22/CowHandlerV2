@@ -2,6 +2,7 @@
     <string name="app_name">CowHandlerV2</string>
 
     <string name="create_new_entry">Create New Entry</string>
+    <string name="View_All_Cows">View all cows</string>
     <string name="view_entry">View Entry</string>
     <string name="edit_entry">Edit Entry</string>
     <string name="delete_entry">Delete Entry</string>
