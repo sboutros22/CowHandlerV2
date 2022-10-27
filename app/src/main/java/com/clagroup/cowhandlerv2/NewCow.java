@@ -1,6 +1,13 @@
 package com.clagroup.cowhandlerv2;
 
-import android.graphics.Bitmap;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+
+import androidx.appcompat.app.AppCompatActivity;
+/*
+This class handles the process of getting the user input from
+CowEntry into the database
+ */
 
 public class NewCow {
     private String CowId;

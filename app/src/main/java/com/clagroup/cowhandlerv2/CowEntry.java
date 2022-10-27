@@ -29,7 +29,12 @@ import com.google.firebase.storage.UploadTask;
 import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 import java.util.Map;
+/*
+This class handles the process of getting manual user input
+for a cow within the Activity
 
+Main -> AddCow -> CowEntry
+ */
 public class CowEntry extends AppCompatActivity {
 
     private Button btn, picBtn;
@@ -106,6 +111,7 @@ public class CowEntry extends AppCompatActivity {
                     public void onSuccess(Void aVoid) {
                         uploadPhoto();
                         Log.d("Cow added Successfully", "DocumentSnapshot successfully written!");;
+
                         startActivity(new Intent(CowEntry.this, MainActivity.class));
                     }
                 })

@@ -5,6 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+
+/*
+This class should handle displaying individual entries
+Or the whole db? undecided
+ */
+
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -39,6 +45,16 @@ public class ViewCow extends AppCompatActivity {
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
         initializeViews();
         btn = findViewById(R.id.submitButton);
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            currentUser = FirebaseAuth.getInstance().getCurrentUser();
+            db = FirebaseFirestore.getInstance();
+            String value = extras.getString("cowBtnId");
+            Log.d("will this work", "why wont this work?");
+            ViewCow(value);
+            Log.d("Does viewCow run", "why wont this work?");
+
+        }
         //Create button click event
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,7 +62,6 @@ public class ViewCow extends AppCompatActivity {
                 currentUser = FirebaseAuth.getInstance().getCurrentUser();
                 db = FirebaseFirestore.getInstance();
                 String cowId = CowId.getText().toString();
-
                 ViewCow(cowId);
             }
         });
