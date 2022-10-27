@@ -18,28 +18,29 @@
         android:contentDescription="@string/place_holder" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn1"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight=".05"
-
-        android:text="@string/create_new_entry" />
-    <Button
-
-        android:id="@+id/overviewBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight=".05"
-        android:text="@string/View_All_Cows" />
-        
-    <Button
-        android:text="@string/create_new_entry"
-        android:textColor="@color/sail_color"
         app:backgroundTint="@color/green_light"
+        android:id="@+id/overviewBtn"
         app:rippleColor="@color/sail_color"
-        app:strokeColor="@color/sail_color"
-        />
+        android:textColor="@color/sail_color"
+        android:text="@string/View_All_Cows"
+        app:strokeColor="@color/sail_color"/>
+
+
+    <com.google.android.material.button.MaterialButton
+         android:id="@+id/btn1"
+         android:text="@string/create_new_entry"
+         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+         android:textColor="@color/sail_color"
+         android:layout_width="match_parent"
+         app:backgroundTint="@color/green_light"
+         android:layout_height="wrap_content"
+         app:rippleColor="@color/sail_color"
+         android:layout_weight=".05"
+         app:strokeColor="@color/sail_color"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/displayEntryBtn"

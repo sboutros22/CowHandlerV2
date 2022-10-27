@@ -1,16 +1,12 @@
 package com.clagroup.cowhandlerv2;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,29 +16,17 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.security.Key;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+
 
 public class OverviewPage extends Activity {
     private FirebaseFirestore db;
     public FirebaseUser currentUser;
-    Button IdButton;
-
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-
 //This page was to serve as a landing page but has only been used for testing
-public class OverviewPage extends Activity {
-
-    public FirebaseUser currentUser;
 
 
     @Override
@@ -79,9 +63,10 @@ public class OverviewPage extends Activity {
                     }
                 });
     }
-        public void createCowBtns(ArrayList<String> ids){
+
+    public void createCowBtns(ArrayList<String> ids) {
         LinearLayout layout = (LinearLayout) findViewById(R.id.linear_layout_tags);
-        for(int i = 0; i < ids.size(); i++) {
+        for (int i = 0; i < ids.size(); i++) {
             //set the properties for button
             Button btnTag = new Button(this);
             btnTag.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
@@ -93,15 +78,25 @@ public class OverviewPage extends Activity {
                 @Override
                 public void onClick(View view) {
                     //Link activities
-                    Intent intent = new Intent(OverviewPage.this,ViewCow.class);
+                    Intent intent = new Intent(OverviewPage.this, ViewCow.class);
                     String cowBtn = btnTag.getText().toString();
-                    intent.putExtra("cowBtnId",cowBtn);
+                    intent.putExtra("cowBtnId", cowBtn);
 
                     startActivity(intent);
                 }
             });
+            btnTag.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    Intent intent = new Intent(OverviewPage.this,DeleteCow.class);
+                    String cowBtn = btnTag.getText().toString();
+                    intent.putExtra("cowBtnId",cowBtn);
+                    startActivity(intent);
+                    return true;
+                }
+            });
+
         }
     }
-
 }
 
