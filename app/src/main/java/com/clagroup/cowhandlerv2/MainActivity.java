@@ -32,8 +32,10 @@ public class MainActivity extends AppCompatActivity {
     DatabaseReference databaseReference;
 
 //Create button
-    Button btn, btn2,btn3,btn4;
+
+    Button btn, btn2,btn3,btn4,btn5;
     TextView credDisplay;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         btn2 = findViewById(R.id.displayEntryBtn);
         btn3 = findViewById(R.id.editEntryBtn);
         btn4 = findViewById(R.id.deleteEntryBtn);
+        btn5 = findViewById(R.id.overviewBtn);
 
 //Create button click event
         btn.setOnClickListener(new View.OnClickListener() {
@@ -87,31 +90,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btn5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Link activities
+                Intent intent = new Intent(MainActivity.this,OverviewPage.class);
+                startActivity(intent);
+            }
+        });
 
-
-                //Cow uploading shifted to enter cow page.
-
-
-            // This is the current form of the database I just need to alter it and add the new value to make it larger
-            //NewCow cow = new NewCow("11/9","Longhorn",119,"small black spots",1,0);
-           // uploadcow(cow);
-
-/*
-            db.collection("Cow")
-                    .get()
-                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                            if (task.isSuccessful()) {
-                                for (QueryDocumentSnapshot document : task.getResult()) {
-                                    Log.d("successful pull", document.getId() + " => " + document.getData());
-                                }
-                            } else {
-                                Log.w("failed pull", "Error getting documents.", task.getException());
-                            }
-                        }
-                    });
-                    */
     }
 
 }
