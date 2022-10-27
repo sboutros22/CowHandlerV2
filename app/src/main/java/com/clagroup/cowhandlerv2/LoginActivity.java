@@ -36,6 +36,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+/*
+This class implements the process of signing in or signing up via Google auth within the activity login layout
+ */
+
 public class LoginActivity extends AppCompatActivity {
 
     private SignInClient oneTapClient;
@@ -46,6 +50,8 @@ public class LoginActivity extends AppCompatActivity {
     private boolean showOneTapUI = true;
     //firebase instance
     private FirebaseAuth mAuth;
+    //Placeholder for getting value of username or equivalent
+    //public static final String EXTRA_MESSAGE = "com.clagroup.cowhandlerv2";
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -100,11 +106,14 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
         btn = findViewById(R.id.btn1);
-
+//PLACEHOLDER CODE ADDED ON LINES 110-112 FOR SENDING LOGIN INFO TO MAIN
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                //EditText editText = (EditText) findViewById(R.id.editText);
+                //String message = editText.getText().toString();
+                //intent.putExtra(EXTRA_MESSAGE, message);
                 startActivity(intent);
             }
         });

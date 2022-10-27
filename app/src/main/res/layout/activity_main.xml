@@ -4,47 +4,69 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gray_med"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
+    <TextView
+        android:id="@+id/credView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight=".8"
-        android:background="@color/gray_light"
+        android:background="@color/gray"
 
         tools:srcCompat="@drawable/ic_launcher_foreground"
         android:contentDescription="@string/place_holder" />
-        
-    <Button
 
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn1"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight=".05"
-        android:text="@string/create_new_entry" />
-        
-    <Button
+        android:text="@string/create_new_entry"
+        android:textColor="@color/sail_color"
+        app:backgroundTint="@color/green_light"
+        app:rippleColor="@color/sail_color"
+        app:strokeColor="@color/sail_color"
+        />
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/displayEntryBtn"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight=".05"
-        android:text="@string/view_entry" />
+        android:text="@string/view_entry"
+        android:textColor="@color/sail_color"
+        app:backgroundTint="@color/green_light"
+        app:rippleColor="@color/sail_color"
+        app:strokeColor="@color/sail_color"
+        />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/editEntryBtn"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight=".05"
-        android:text="@string/edit_entry" />
+        android:text="@string/edit_entry"
+        android:textColor="@color/sail_color"
+        app:backgroundTint="@color/green_light"
+        app:rippleColor="@color/sail_color"
+        app:strokeColor="@color/sail_color"
+        />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/deleteEntryBtn"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight=".05"
-        android:text="@string/delete_entry" />
+        android:text="@string/delete_entry"
+        android:textColor="@color/black"
+        app:backgroundTint="@color/orange_light"
+        app:rippleColor="@color/sail_color"
+        app:strokeColor="@color/orange_dark"
+        />
 
 </LinearLayout>

@@ -5,6 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+
+/*
+This class should handle displaying individual entries
+Or the whole db? undecided
+ */
+
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;

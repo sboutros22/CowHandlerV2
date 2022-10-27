@@ -5,6 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+
+/*
+The user will be navigated to this activity for deleting an
+entry upon clicking the "Delete Entry" button on the landing page
+ */
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +27,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+
 
 public class DeleteCow extends AppCompatActivity {
 
