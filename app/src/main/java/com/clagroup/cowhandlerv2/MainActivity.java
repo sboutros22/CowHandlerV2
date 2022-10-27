@@ -2,8 +2,6 @@ package com.clagroup.cowhandlerv2;
 
 import static android.app.ProgressDialog.show;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,36 +9,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import android.text.TextUtils;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
+import android.widget.TextView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.firestore.auth.User;
 
-import java.util.HashMap;
-import java.util.Map;
-
+/*
+This class controls the landing page that the user arrives to after signing in.
+ */
 public class MainActivity extends AppCompatActivity {
 
     private EditText CowId, Species, Gender, Descr, BirthDt, Mother, Father, HerdNum, Weight, Age;
@@ -52,7 +32,9 @@ public class MainActivity extends AppCompatActivity {
     DatabaseReference databaseReference;
 
 //Create button
+
     Button btn, btn2,btn3,btn4,btn5;
+    TextView credDisplay;
 
 
     @Override
@@ -60,8 +42,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //get firebase user
+        //Get firebase user email and display
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        String user_cred = currentUser.getEmail().toString();
+
+        credDisplay = findViewById(R.id.credView);
+        credDisplay.setText(user_cred);
 
 //Assign button to Create Entry view
         btn = findViewById(R.id.btn1);
@@ -112,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 
 }
