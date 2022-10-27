@@ -126,12 +126,12 @@ public class NewCow {
         this.weight = weight;
     }
 
-    public String getcowImage() {
+    public String getpathToCowPicture() {
         return pathToCowPicture;
     }
 
-    public void setcowImage(String cowImage) {
-        this.pathToCowPicture = cowImage;
+    public void setpathToCowPicture(String pathToCowPicture) {
+        this.pathToCowPicture = pathToCowPicture;
     }
 
 }

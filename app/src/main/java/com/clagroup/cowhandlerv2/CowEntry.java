@@ -92,7 +92,7 @@ public class CowEntry extends AppCompatActivity {
                 String vac1 = vacCheck1.getText().toString();
                 RadioButton vacCheck2 = findViewById(vaccination2);
                 String vac2 = vacCheck2.getText().toString();
-                pathToCowPicture = storageRef.toString() + "images/" + currentUser.getUid() + "/" + cowId + "/picture.jpg";
+                pathToCowPicture = "images/" + currentUser.getUid() + "/" + cowId + "/picture.jpg";
                 Log.d("Submit button check", "did this work at all");
 
                 NewCow Cow = new NewCow(cowId, birthdayDt, age, species, weight, sex, Description, vac1, vac2, mother, father, pathToCowPicture);

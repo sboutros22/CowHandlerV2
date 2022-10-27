@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.net.Uri;
 import android.os.Bundle;
 
 /*
@@ -15,9 +16,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -26,6 +31,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -35,6 +42,7 @@ public class ViewCow extends AppCompatActivity {
     public FirebaseUser currentUser;
     private EditText CowId;
     private Button btn;
+
 
 
     @Override
@@ -85,10 +93,33 @@ public class ViewCow extends AppCompatActivity {
                        Map<String, Object> mapSetUp = new HashMap<String, Object>();
                        mapSetUp = document.getData();
                        for(Map.Entry<String, Object> entry : mapSetUp.entrySet()) {
-                           String key = entry.getKey();
-                           String value = document.get(key).toString();
-                           Log.d("successfully fetched cow","Key: "+ key + "  Value: " + value);
-                           results += key + ": " + value + "\n";
+
+                           //checks to ensure we don't show a filepath.
+                           if(entry.getKey().equals("pathToCowPicture")) {
+                               //gets the photo download url if one exists, then calls "showCowPicture" to display photo.
+                               FirebaseStorage.getInstance().getReference().child(document.get(entry.getKey()).toString()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                   @Override
+                                   public void onSuccess(Uri uri) {
+                                       String url = uri.toString();
+                                       showCowPicture(url);
+                                       Log.d("successfully fetched cow pic", "Cow pic URL retrieved: " + url);
+                                   }
+                               }).addOnFailureListener(new OnFailureListener() {
+                                   @Override
+                                   public void onFailure(@NonNull Exception exception) {
+                                       Log.d("Failed to retrieve photo from storage", "Error finding photo");
+                                   }
+                               });
+
+                           }
+                           //enters all the other data into a string to display
+                           else {
+                               String key = entry.getKey();
+                               String value = document.get(key).toString();
+                               Log.d("successfully fetched cow", "Key: " + key + "  Value: " + value);
+                               results += key + ": " + value + "\n";
+                           }
+
                        }
                        cowInfo.setText(results);
 
@@ -102,5 +133,13 @@ public class ViewCow extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void showCowPicture(String picturePath){
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference();
+        ImageView imageView = findViewById(R.id.cowImage);
+        Glide.with(this)
+                .load(picturePath)
+                .into(imageView);
     }
 }
