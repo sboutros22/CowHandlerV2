@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
 //Create button
 
-    Button btn, btn2,btn3,btn4,btn5;
+    Button btn,btn2,btn3,btn4,btn5;
     TextView credDisplay;
 
 
@@ -87,15 +87,6 @@ public class MainActivity extends AppCompatActivity {
         btn4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Link activities
-                Intent intent = new Intent(MainActivity.this,DeleteCow.class);
-                startActivity(intent);
-            }
-        });
-
-        btn5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
                 // 1. Instantiate an <code><a href="/reference/android/app/AlertDialog.Builder.html">AlertDialog.Builder</a></code> with its constructor
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
 
@@ -118,8 +109,17 @@ public class MainActivity extends AppCompatActivity {
                 dialog.show();
             }
             //Link activities
-            //Intent intent = new Intent(MainActivity.this,OverviewPage.class);
+            //Intent intent = new Intent(MainActivity.this,DeleteCow.class);
             //startActivity(intent);
+        });
+
+        btn5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Link activities
+                Intent intent = new Intent(MainActivity.this, OverviewPage.class);
+                startActivity(intent);
+            }
         });
 
     }
