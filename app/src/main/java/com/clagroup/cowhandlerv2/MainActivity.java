@@ -87,7 +87,8 @@ public class MainActivity extends AppCompatActivity {
         btn4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // 1. Instantiate an <code><a href="/reference/android/app/AlertDialog.Builder.html">AlertDialog.Builder</a></code> with its constructor
+                // 1. Instantiate an <code><a href="/reference/android/app/AlertDialog.Builder.html">
+                //                                  AlertDialog.Builder</a></code> with its constructor
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
 
                 // 2. Chain together various setter methods to set the dialog characteristics
@@ -97,6 +98,9 @@ public class MainActivity extends AppCompatActivity {
                 builder.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         Toast.makeText(MainActivity.this,"Confirming...",Toast.LENGTH_SHORT).show();
+                        //Link activities
+                        Intent intent = new Intent(MainActivity.this,DeleteCow.class);
+                        startActivity(intent);
                     }
                 });
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -104,13 +108,11 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this,"Cancelling...",Toast.LENGTH_SHORT).show();
                     }
                 });
-                // 3. Get the <code><a href="/reference/android/app/AlertDialog.html">AlertDialog</a></code> from <code><a href="/reference/android/app/AlertDialog.Builder.html#create()">create()</a></code>
+                // 3. Get the <code><a href="/reference/android/app/AlertDialog.html">AlertDialog</a></code>
+                // from <code><a href="/reference/android/app/AlertDialog.Builder.html#create()">create()</a></code>
                 AlertDialog dialog = builder.create();
                 dialog.show();
             }
-            //Link activities
-            //Intent intent = new Intent(MainActivity.this,DeleteCow.class);
-            //startActivity(intent);
         });
 
         btn5.setOnClickListener(new View.OnClickListener() {
