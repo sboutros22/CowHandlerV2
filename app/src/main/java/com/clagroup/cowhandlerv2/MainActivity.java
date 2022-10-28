@@ -2,8 +2,10 @@ package com.clagroup.cowhandlerv2;
 
 import static android.app.ProgressDialog.show;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -93,10 +96,30 @@ public class MainActivity extends AppCompatActivity {
         btn5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Link activities
-                Intent intent = new Intent(MainActivity.this,OverviewPage.class);
-                startActivity(intent);
+                // 1. Instantiate an <code><a href="/reference/android/app/AlertDialog.Builder.html">AlertDialog.Builder</a></code> with its constructor
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+
+                // 2. Chain together various setter methods to set the dialog characteristics
+                builder.setMessage("Are you sure you want to continue?")
+                        .setTitle("Confirm Deletion");
+                // Add the buttons
+                builder.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Toast.makeText(MainActivity.this,"Confirming...",Toast.LENGTH_SHORT).show();
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Toast.makeText(MainActivity.this,"Cancelling...",Toast.LENGTH_SHORT).show();
+                    }
+                });
+                // 3. Get the <code><a href="/reference/android/app/AlertDialog.html">AlertDialog</a></code> from <code><a href="/reference/android/app/AlertDialog.Builder.html#create()">create()</a></code>
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
+            //Link activities
+            //Intent intent = new Intent(MainActivity.this,OverviewPage.class);
+            //startActivity(intent);
         });
 
     }
