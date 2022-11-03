@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -35,7 +35,6 @@
         android:layout_height="wrap_content"
         android:text=""
         android:id="@+id/results"
-
         />
     <ImageView
         android:id="@+id/cowImage"
@@ -43,5 +42,29 @@
         android:layout_height="match_parent"
         android:contentDescription="@string/cow"
         app:srcCompat="@drawable/ic_launcher_background" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/Ebtn"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_weight=".05"
+        android:text="@string/Edit_Cow_View"
+        android:textColor="@color/sail_color"
+        app:backgroundTint="@color/green_light"
+        app:rippleColor="@color/sail_color"
+        app:strokeColor="@color/sail_color" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/Dbtn"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_weight=".05"
+        android:text="@string/Delete_Cow_View"
+        android:textColor="@color/black"
+        app:backgroundTint="@color/orange_light"
+        app:rippleColor="@color/sail_color"
+        app:strokeColor="@color/orange_dark" />
 </LinearLayout>
 </ScrollView>

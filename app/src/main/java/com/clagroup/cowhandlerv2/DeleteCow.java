@@ -57,7 +57,7 @@ public class DeleteCow extends AppCompatActivity {
             String value = extras.getString("cowBtnId");
             Log.d("will this work", "why wont this work?");
             deleteCow(value);
-            Log.d("Does viewCow run", "why wont this work?");
+            Log.d("Does deleteCow run", "why wont this work?");
 
         }
 
