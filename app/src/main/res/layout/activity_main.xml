@@ -48,7 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight=".05"
-        android:text="@string/view_entry"
+        android:text="@string/Search_by_CowID"
         android:textColor="@color/sail_color"
         app:backgroundTint="@color/green_light"
         app:rippleColor="@color/sail_color"
