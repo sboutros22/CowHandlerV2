@@ -6,7 +6,12 @@
     <string name="view_entry">View Entry</string>
     <string name="edit_entry">Edit Entry</string>
     <string name="delete_entry">Delete Entry</string>
+
     <string name="Search_by_CowID">Search by CowID</string>
+
+    <string name="Edit_Cow_View">Edit Entry</string>
+    <string name="Delete_Cow_View">Delete Entry</string>
+
 
     <string name="place_holder">placeholder</string>
 

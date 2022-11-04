@@ -11,6 +11,7 @@ import androidx.core.content.ContextCompat;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -59,6 +60,7 @@ import java.util.Map;
 public class ViewCow extends AppCompatActivity {
     private FirebaseFirestore db;
     public FirebaseUser currentUser;
+
     private String cowId;
 
     // variables for our buttons.
@@ -75,6 +77,9 @@ public class ViewCow extends AppCompatActivity {
 
     // constant code for runtime permissions
     private static final int PERMISSION_REQUEST_CODE = 200;
+
+    private EditText CowId;
+    private Button btn, Ebtn, Dbtn;
 
 
 
@@ -94,9 +99,14 @@ public class ViewCow extends AppCompatActivity {
         //bmp = BitmapFactory.decodeResource(getResources(), R.drawable.imageName);
         //scaledbmp = Bitmap.createScaledBitmap(bmp, 140, 140, false);
 
+        initializeViews();
+        btn = findViewById(R.id.submitButton);
+        Ebtn = findViewById(R.id.Ebtn);
+        Dbtn = findViewById(R.id.Dbtn);
 
 
         Bundle extras = getIntent().getExtras();
+
         if (extras != null) {
             if(extras.getBoolean("pdfRequest")) {
                 currentUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -125,6 +135,26 @@ public class ViewCow extends AppCompatActivity {
                 ViewCow(cowId, true);
             }
         });
+        Ebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Link activities
+                Intent intent = new Intent(ViewCow.this, EditEntry.class);
+                startActivity(intent);
+            }
+        });
+        Dbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Link activities
+                Intent intent = new Intent(ViewCow.this, DeleteCow.class);
+                Log.d("what is cowid","cowId string: " + cowID);
+                intent.putExtra("cowBtnId",cowID);
+                Log.d("Did this send cowId to delete", "This is to see if the putExtra worked");
+                startActivity(intent);
+            }
+        });
+
     }
 
     @SuppressLint("NotConstructor")
@@ -142,7 +172,6 @@ public class ViewCow extends AppCompatActivity {
                        Map<String, Object> mapSetUp = new HashMap<String, Object>();
                        mapSetUp = document.getData();
                        for(Map.Entry<String, Object> entry : mapSetUp.entrySet()) {
-
                            //checks to ensure we don't show a filepath.
                            if(entry.getKey().equals("pathToCowPicture")) {
                                //gets the photo download url if one exists, then calls "showCowPicture" to display photo.
@@ -164,11 +193,18 @@ public class ViewCow extends AppCompatActivity {
                            //enters all the other data into a string to display
                            else {
                                String key = entry.getKey();
+                               Log.d("What are the keys in else statement","Keys:  " + key);
+
                                String value = document.get(key).toString();
-                               Log.d("successfully fetched cow", "Key: " + key + "  Value: " + value);
+                               if(entry.getKey().equals("cowId")){
+                                   cowID = value;
+                                   Log.d("what is cowId in if statement","cowId string:  " + cowID);
+
+                               }
+
+                                   Log.d("successfully fetched cow", "Key: " + key + "  Value: " + value);
                                results += key + ": " + value + "\n";
                            }
-
                        }
                        cowInfo.setText(results);
                        if(pdfRequested){
@@ -187,7 +223,6 @@ public class ViewCow extends AppCompatActivity {
             }
         });
     }
-
     private void showCowPicture(String picturePath){
         StorageReference storageReference = FirebaseStorage.getInstance().getReference();
         ImageView imageView = findViewById(R.id.cowImage);
