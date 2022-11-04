@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Link activities
-                Intent intent = new Intent(MainActivity.this,ViewCow.class);
+                Intent intent = new Intent(MainActivity.this,SearchCow.class);
                 startActivity(intent);
             }
         });

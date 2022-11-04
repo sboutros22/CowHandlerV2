@@ -1,8 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -13,30 +9,22 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Information on the chosen cow listed below."
+        android:text="Please insert the CowId of the cow you would like to see"
         android:textSize ="16sp"
         android:textColor="#FFF"
         android:textStyle="bold"
         android:layout_margin="8dp"/>
-
-    <TextView
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text=""
-        android:id="@+id/results"
-
-        />
-    <ImageView
-        android:id="@+id/cowImage"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:contentDescription="@string/cow"
-        app:srcCompat="@drawable/ic_launcher_background" />
-
+        android:hint="CowID"
+        android:id="@+id/cowId"
+        android:inputType="text"/>
     <Button
-        android:id="@+id/pdfButton"
+        android:id="@+id/submitButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Generate PDF for this cow." />
+        android:text="Submit"
+        app:icon="@android:drawable/stat_sys_upload" />
+
 </LinearLayout>
-</ScrollView>
