@@ -18,19 +18,6 @@
         android:contentDescription="@string/place_holder" />
 
     <com.google.android.material.button.MaterialButton
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight=".05"
-        app:backgroundTint="@color/green_light"
-        android:id="@+id/overviewBtn"
-        app:rippleColor="@color/sail_color"
-        android:textColor="@color/sail_color"
-        android:text="@string/View_All_Cows"
-        app:strokeColor="@color/sail_color"/>
-
-
-    <com.google.android.material.button.MaterialButton
          android:id="@+id/btn1"
          android:text="@string/create_new_entry"
          style="@style/Widget.MaterialComponents.Button.OutlinedButton"

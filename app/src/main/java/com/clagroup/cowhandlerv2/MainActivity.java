@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
 //Create button
 
-    Button btn,btn2,btn3,btn4,btn5;
+    Button btn,btn2,btn3,btn4;
     TextView credDisplay;
 
 
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         btn2 = findViewById(R.id.displayEntryBtn);
         btn3 = findViewById(R.id.editEntryBtn);
         btn4 = findViewById(R.id.deleteEntryBtn);
-        btn5 = findViewById(R.id.overviewBtn);
+        //btn5 = findViewById(R.id.overviewBtn);
 
 //Create button click event
         btn.setOnClickListener(new View.OnClickListener() {
@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
                 dialog.show();
             }
         });
-
+/*
         btn5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -123,8 +123,23 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+*/
     }
 
 }
 
+/*
+Don't currently know if needed or not
+
+<com.google.android.material.button.MaterialButton
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight=".05"
+        app:backgroundTint="@color/green_light"
+        android:id="@+id/overviewBtn"
+        app:rippleColor="@color/sail_color"
+        android:textColor="@color/sail_color"
+        android:text="@string/View_All_Cows"
+        app:strokeColor="@color/sail_color"/>
+ */
