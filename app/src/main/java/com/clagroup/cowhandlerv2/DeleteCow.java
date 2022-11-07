@@ -1,8 +1,10 @@
 package com.clagroup.cowhandlerv2;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -14,6 +16,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -68,7 +71,32 @@ public class DeleteCow extends AppCompatActivity {
                 db = FirebaseFirestore.getInstance();
 
                 String cowId = CowId.getText().toString();
+/*
+                // 1. Instantiate an <code><a href="/reference/android/app/AlertDialog.Builder.html">
+                //                                  AlertDialog.Builder</a></code> with its constructor
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
 
+                // 2. Chain together various setter methods to set the dialog characteristics
+                builder.setMessage("Are you sure you want to continue?")
+                        .setTitle("Confirm Deletion");
+                // Add the buttons
+                builder.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Toast.makeText(DeleteCow.this,"Confirming...",Toast.LENGTH_SHORT).show();
+                        //Link activities
+                        deleteCow(cowId);
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Toast.makeText(DeleteCow.this,"Cancelling...",Toast.LENGTH_SHORT).show();
+                    }
+                });
+                // 3. Get the <code><a href="/reference/android/app/AlertDialog.html">AlertDialog</a></code>
+                // from <code><a href="/reference/android/app/AlertDialog.Builder.html#create()">create()</a></code>
+                AlertDialog dialog = builder.create();
+                dialog.show();
+*/
                 deleteCow(cowId);
 
 
