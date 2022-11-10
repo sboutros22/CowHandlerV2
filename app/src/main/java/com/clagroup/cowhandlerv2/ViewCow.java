@@ -78,8 +78,8 @@ public class ViewCow extends AppCompatActivity {
     // constant code for runtime permissions
     private static final int PERMISSION_REQUEST_CODE = 200;
 
-    private EditText CowId;
     private Button btn, Ebtn, Dbtn;
+    private String cowID;
 
 
 
@@ -99,7 +99,6 @@ public class ViewCow extends AppCompatActivity {
         //bmp = BitmapFactory.decodeResource(getResources(), R.drawable.imageName);
         //scaledbmp = Bitmap.createScaledBitmap(bmp, 140, 140, false);
 
-        initializeViews();
         btn = findViewById(R.id.submitButton);
         Ebtn = findViewById(R.id.Ebtn);
         Dbtn = findViewById(R.id.Dbtn);
@@ -140,6 +139,9 @@ public class ViewCow extends AppCompatActivity {
             public void onClick(View view) {
                 //Link activities
                 Intent intent = new Intent(ViewCow.this, EditEntry.class);
+                Log.d("what is cowid","cowId string: " + cowID);
+                intent.putExtra("cowBtnId",cowID);
+                Log.d("Did this send cowId to edit?", "This is to see if the putExtra worked");
                 startActivity(intent);
             }
         });
