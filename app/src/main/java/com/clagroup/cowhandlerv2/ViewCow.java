@@ -139,6 +139,9 @@ public class ViewCow extends AppCompatActivity {
             public void onClick(View view) {
                 //Link activities
                 Intent intent = new Intent(ViewCow.this, EditEntry.class);
+                Log.d("what is cowid","cowId string: " + cowID);
+                intent.putExtra("cowBtnId",cowID);
+                Log.d("Did this send cowId to edit?", "This is to see if the putExtra worked");
                 startActivity(intent);
             }
         });

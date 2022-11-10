@@ -82,11 +82,13 @@
             android:layout_height="wrap_content"
             android:text='Yes'
             android:layout_marginRight="8dp"
-            android:layout_marginLeft="8dp"/>
+            android:layout_marginLeft="8dp"
+            android:id="@+id/Yes"/>
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text='No'/>
+            android:text='No'
+            android:id="@+id/No"/>
     </RadioGroup>
 
     <EditText
@@ -98,7 +100,7 @@
         app:layout_constraintBottom_toTopOf="@+id/editButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/updateField"
+        app:layout_constraintTop_toBottomOf="@+id/currentValueDisplay"
         android:visibility="gone"/>
 
     <Button
@@ -106,7 +108,7 @@
         android:layout_width="267dp"
         android:layout_height="42dp"
         android:layout_marginBottom="60dp"
-        android:text="Delete Cow Entry"
+        android:text="Edit Cow Entry"
         app:icon="@android:drawable/stat_sys_upload"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

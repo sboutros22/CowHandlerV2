@@ -35,15 +35,13 @@
             android:layout_height="wrap_content"
             android:hint="Weight of Cow"
             android:id="@+id/Weight"
-            android:inputType="text"
-            android:digits="0123456789"/>
+            android:inputType="number" />
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Age of Cow"
             android:id="@+id/Age"
-            android:inputType="text"
-            android:digits="0123456789"/>
+            android:inputType="number"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

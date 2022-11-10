@@ -31,6 +31,9 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class EditEntry extends AppCompatActivity {
 
     private Button btn;
@@ -48,6 +51,18 @@ public class EditEntry extends AppCompatActivity {
 
         initializeViews();
 
+        currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        db = FirebaseFirestore.getInstance();
+
+        Bundle extras = getIntent().getExtras();
+
+        if (extras != null) {
+            String value = extras.getString("cowBtnId");
+            cowId = value;
+            Log.d("Edit CowId Input", "Edit cow  reads cowId:" + cowId);
+            cowIdDisplay.setText(cowId);
+        }
+
         //get the spinner from the xml.
         Spinner dropdown =findViewById(R.id.updateField);
         //create a list of items for the spinner.
@@ -61,16 +76,37 @@ public class EditEntry extends AppCompatActivity {
         dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 //need to adjust cases to limit input type
-                switch(dropdown.getSelectedItem().toString().toLowerCase()){
-                    case "Weight":
-                    case "Age":
-                    case "Description":
+                switch(dropdown.getSelectedItem().toString().toLowerCase()) {
+                    case "weight":
+                    case "age":
                         newValue.setVisibility(View.VISIBLE);
-                    case "Vaccination Dose 1":
-                    case "Vaccination Dose 2":
+                        newValue.setInputType(2);//sets number input
+                        currentValueDisplay.setVisibility((View.VISIBLE));
+                        vaccineValue.setVisibility(View.GONE);
+                        getCurrentValue(cowId, dropdown.getSelectedItem().toString().toLowerCase());
+                        break;
+                    case "description":
+                        newValue.setVisibility(View.VISIBLE);
+                        newValue.setInputType(1);//sets text input
+                        currentValueDisplay.setVisibility((View.VISIBLE));
+                        vaccineValue.setVisibility(View.GONE);
+                        getCurrentValue(cowId, dropdown.getSelectedItem().toString().toLowerCase());
+                        break;
+                    case "vaccination dose 1":
                         vaccineValue.setVisibility(View.VISIBLE);
+                        newValue.setVisibility(View.GONE);
+                        currentValueDisplay.setVisibility((View.GONE));
+                        getCurrentValue(cowId, "vac1");
+                        selectCurrentButton();
+                        break;
+                    case "vaccination dose 2":
+                        vaccineValue.setVisibility(View.VISIBLE);
+                        newValue.setVisibility(View.GONE);
+                        currentValueDisplay.setVisibility((View.GONE));
+                        getCurrentValue(cowId, "vac2");
+                        selectCurrentButton();
+                        break;
                 }
-                getCurrentValue(cowId, dropdown.getSelectedItem().toString().toLowerCase());
             }
 
             public void onNothingSelected(AdapterView<?> adapterView) {
@@ -82,27 +118,36 @@ public class EditEntry extends AppCompatActivity {
         //Create button click event
         btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                currentUser = FirebaseAuth.getInstance().getCurrentUser();
-                db = FirebaseFirestore.getInstance();
+
 
                 String updateValue;
                 String updateField = dropdown.getSelectedItem().toString().toLowerCase();
                 switch(updateField){
-                    case "Weight":
-                    case "Age":
-                    case "Description":
+                    case "weight":
+                    case "age":
+                    case "description":
                         updateValue = newValue.getText().toString();
-                    case "Vaccination Dose 1":
-                    case "Vaccination Dose 2":
-                        int vaccination = vaccineValue.getCheckedRadioButtonId();
-                        RadioButton vacCheck1 = findViewById(vaccination);
+                        break;
+                    case "vaccination dose 1":
+                        updateField = "vac1";
+                        int vaccination1 = vaccineValue.getCheckedRadioButtonId();
+                        RadioButton vacCheck1 = findViewById(vaccination1);
                         updateValue = vacCheck1.getText().toString();
+                        break;
+                    case "vaccination dose 2":
+                        updateField = "vac2";
+                        int vaccination2 = vaccineValue.getCheckedRadioButtonId();
+                        RadioButton vacCheck2 = findViewById(vaccination2);
+                        updateValue = vacCheck2.getText().toString();
+                        break;
                     default:
                         updateValue = null;
+                        break;
                 }
 
                 if(updateValue != null){
-                    updateEntry("0307", updateValue, updateField);
+                    Log.d("Update Value", "update value: " + updateValue);
+                    updateEntry(cowId, updateValue, updateField);
                 }
                 else{
                     Log.d("Update Value", "There was an error finding the value to update");
@@ -142,9 +187,21 @@ public class EditEntry extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
-                        String currentValue = (String) document.get("key");
-                        currentValueDisplay.setText(currentValue);
-                    } else {
+                        Map<String, Object> mapSetUp = new HashMap<String, Object>();
+                        mapSetUp = document.getData();
+                        for(Map.Entry<String, Object> entry : mapSetUp.entrySet()) {
+                            //checks to ensure we don't show a filepath.
+                            if(entry.getKey().equals(key)) {
+                                String key = entry.getKey();
+                                String currentValue = document.get(key).toString();
+                                Log.d("Getting Value", "Successfully got value: " + currentValue);
+                                currentValueDisplay.setText(currentValue);
+                                Log.d("Getting Value", "Display value setText ran.");
+                            }
+
+                        }
+                    }
+                    else {
                         Log.d("Getting Value", "No documents with id");
                     }
                 }
@@ -153,6 +210,17 @@ public class EditEntry extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void selectCurrentButton(){
+        if(currentValueDisplay.getText() == "Yes"){
+            RadioButton b = (RadioButton) findViewById(R.id.Yes);
+            b.setChecked(true);
+        }
+        else{
+            RadioButton b = (RadioButton) findViewById(R.id.No);
+            b.setChecked(true);
+        }
     }
 
     private void initializeViews() {
