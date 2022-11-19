@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.CowHandlerV2" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.CowHandlerV2" parent="Theme.MaterialComponents.DayNight">
         <item name="android:background">@color/green_dark</item>
         <item name="android:textColor">@color/sail_color</item>
         <!-- Primary brand color. -->
