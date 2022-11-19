@@ -22,4 +22,6 @@
     <string name="input_species">Input Species</string>
 
     <string name="upload_txt">Upload</string>
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
 </resources>
