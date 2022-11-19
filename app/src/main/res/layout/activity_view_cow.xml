@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -13,29 +13,55 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Please insert the CowId of the cow you would like to see"
+        android:text="Information on the chosen cow listed below."
         android:textSize ="16sp"
         android:textColor="#FFF"
         android:textStyle="bold"
         android:layout_margin="8dp"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="CowID"
-        android:id="@+id/cowId"
-        android:inputType="text"/>
-    <Button
-        android:id="@+id/submitButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Submit"
-        app:icon="@android:drawable/stat_sys_upload" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text=""
         android:id="@+id/results"
-
         />
+    <ImageView
+        android:id="@+id/cowImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/cow"
+        app:srcCompat="@drawable/ic_launcher_background" />
+
+
+    <Button
+        android:id="@+id/pdfButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Generate PDF for this cow." />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/Ebtn"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_weight=".05"
+        android:text="@string/Edit_Cow_View"
+        android:textColor="@color/sail_color"
+        app:backgroundTint="@color/green_light"
+        app:rippleColor="@color/sail_color"
+        app:strokeColor="@color/sail_color" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/Dbtn"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_weight=".05"
+        android:text="@string/Delete_Cow_View"
+        android:textColor="@color/black"
+        app:backgroundTint="@color/orange_light"
+        app:rippleColor="@color/sail_color"
+        app:strokeColor="@color/orange_dark" />
+
 </LinearLayout>
 </ScrollView>

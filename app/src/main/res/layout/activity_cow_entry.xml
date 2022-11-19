@@ -29,21 +29,19 @@
             android:hint="Species"
             android:id="@+id/Species"
             android:inputType="text"
-            android:digits="qwertzuiopasdfghjklyxcvbnm"/>
+            android:digits="qwertzuiopasdfghjklyxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Weight of Cow"
             android:id="@+id/Weight"
-            android:inputType="text"
-            android:digits="0123456789. qwertzuiopasdfghjklyxcvbnm"/>
+            android:inputType="number" />
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Age of Cow"
             android:id="@+id/Age"
-            android:inputType="text"
-            android:digits="0123456789"/>
+            android:inputType="number"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -75,7 +73,7 @@
             android:hint="Description of cow"
             android:id="@+id/Descr"
             android:inputType="text"
-            android:digits="0123456789*, qwertzuiopasdfghjklyxcvbnm/"/>
+            android:digits="0123456789*, qwertzuiopasdfghjklyxcvbnm/QWERTYUIOPLKJHGFDSAZXCVBNM"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -102,7 +100,7 @@
             android:text="Vaccination status for first dose"
             android:textSize ="16sp"
             android:textColor="#FFF"
-            android:textStyle="bold" 
+            android:textStyle="bold"
             android:layout_margin="8dp"/>
         <RadioGroup
             android:layout_width="match_parent"
@@ -152,12 +150,13 @@
             android:hint="Herd Number"
             android:id="@+id/HerdNum"
             android:inputType="text"/>
+
         <Button
-            android:id="@+id/submitButton"
+            android:id="@+id/pictureButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/upload_txt"
-            app:icon="@android:drawable/stat_sys_upload" />
+            android:text="Take a Picture"
+            app:icon="@android:drawable/ic_menu_camera" />
 
         <ImageView
             android:id="@+id/cowImage"
@@ -165,6 +164,14 @@
             android:layout_height="wrap_content"
             android:contentDescription="@string/cow"
             app:srcCompat="@drawable/ic_launcher_background" />
+
+        <Button
+            android:id="@+id/submitButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/upload_txt"
+            app:icon="@android:drawable/stat_sys_upload" />
+
 
     </LinearLayout>
 </ScrollView>

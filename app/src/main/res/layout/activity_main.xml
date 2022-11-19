@@ -19,6 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
+
         <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn1"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
@@ -31,6 +32,7 @@
                 app:rippleColor="@color/sail_color"
                 app:strokeColor="@color/sail_color"
                 />
+
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/displayEntryBtn"

@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 This class handles the process of getting the user input from
 CowEntry into the database
  */
+
 public class NewCow {
     private String CowId;
     private String Description;
@@ -19,9 +20,10 @@ public class NewCow {
     private String Vac2;
     private String gender;
     private int  age, weight;
+    private String pathToCowPicture;
 
 
-    public NewCow(String cowId, String birthdayDt, int age, String species, int weight, String gender, String description, String vac1, String vac2, String mother, String father) {
+    public NewCow(String cowId, String birthdayDt, int age, String species, int weight, String gender, String description, String vac1, String vac2, String mother, String father, String pathToCowPicture) {
         this.CowId = cowId;
         this.Species = species;
         this.Description = description;
@@ -33,6 +35,7 @@ public class NewCow {
         this.gender = gender;
         this.mother = mother;
         this.father = father;
+        this.pathToCowPicture = pathToCowPicture;
     }
 
     public String getCowId() {
@@ -121,6 +124,14 @@ public class NewCow {
 
     public void setWeight(int weight) {
         this.weight = weight;
+    }
+
+    public String getpathToCowPicture() {
+        return pathToCowPicture;
+    }
+
+    public void setpathToCowPicture(String pathToCowPicture) {
+        this.pathToCowPicture = pathToCowPicture;
     }
 
 }
