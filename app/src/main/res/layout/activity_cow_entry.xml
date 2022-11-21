@@ -10,17 +10,24 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".CowEntry">
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/cow" />
+        <Spinner
+            android:id="@+id/updateField"
+            android:layout_width="322dp"
+            android:layout_height="78dp"
+            android:layout_weight="1"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="CowID"
             android:id="@+id/cowId"
+            android:visibility="gone"
             android:inputType="text"
             android:digits="0123456789qwertzuiopasdfghjklyxcvbnm" />
         <EditText
@@ -28,6 +35,8 @@
             android:layout_height="wrap_content"
             android:hint="Species"
             android:id="@+id/Species"
+            android:visibility="gone"
+
             android:inputType="text"
             android:digits="qwertzuiopasdfghjklyxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM"/>
         <EditText
@@ -35,27 +44,36 @@
             android:layout_height="wrap_content"
             android:hint="Weight of Cow"
             android:id="@+id/Weight"
+            android:visibility="gone"
+
             android:inputType="number" />
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Age of Cow"
             android:id="@+id/Age"
+            android:visibility="gone"
+
             android:inputType="number"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Gender"
+            android:visibility="gone"
             android:textSize ="16sp"
             android:textColor="#FFF"
             android:textStyle="bold"
+            android:id="@+id/GenderText"
+
             android:layout_margin="8dp"/>
         <RadioGroup
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:orientation="horizontal"
-            android:id="@+id/Gender">
+            android:id="@+id/Gender"
+            android:visibility="gone"
+            >
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -67,37 +85,12 @@
                 android:layout_height="wrap_content"
                 android:text='Female'/>
         </RadioGroup>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Description of cow"
-            android:id="@+id/Descr"
-            android:inputType="text"
-            android:digits="0123456789*, qwertzuiopasdfghjklyxcvbnm/QWERTYUIOPLKJHGFDSAZXCVBNM"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Birth date MM/YY"
-            android:id="@+id/BirthDt"
-            android:inputType="date"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Mother ID"
-            android:id="@+id/Mother"
-            android:inputType="text"
-            android:digits="0123456789qwertzuiopasdfghjklyxcvbnm/"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Father ID"
-            android:id="@+id/Father"
-            android:inputType="text"
-            android:digits="0123456789qwertzuiopasdfghjklyxcvbnm/"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Vaccination status for first dose"
+            android:text="Is the Cow a Breeder?"
+            android:id="@+id/BreedableText"
+            android:visibility="gone"
             android:textSize ="16sp"
             android:textColor="#FFF"
             android:textStyle="bold"
@@ -107,7 +100,79 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:orientation="horizontal"
-            android:id="@+id/Vac1">
+            android:id="@+id/breeder"
+            android:visibility="gone"
+            >
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text='Breeder'
+                android:layout_marginRight="8dp"
+                android:layout_marginLeft="8dp"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text='NonBreeder'/>
+        </RadioGroup>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Number of Offspring"
+            android:id="@+id/NumOfBirths"
+            android:visibility="gone"
+
+            android:inputType="number"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Description of cow"
+            android:id="@+id/Descr"
+            android:visibility="gone"
+
+            android:inputType="text"
+            android:digits="0123456789*, qwertzuiopasdfghjklyxcvbnm/QWERTYUIOPLKJHGFDSAZXCVBNM"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Birth date MM/YY"
+            android:id="@+id/BirthDt"
+            android:visibility="gone"
+
+            android:inputType="date"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Mother ID"
+            android:id="@+id/Mother"
+            android:visibility="gone"
+            android:inputType="text"
+            android:digits="0123456789qwertzuiopasdfghjklyxcvbnm/"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Father ID"
+            android:id="@+id/Father"
+            android:visibility="gone"
+            android:inputType="text"
+            android:digits="0123456789qwertzuiopasdfghjklyxcvbnm/"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Vaccination status for first dose"
+            android:id="@+id/Vac1Text"
+            android:visibility="gone"
+            android:textSize ="16sp"
+            android:textColor="#FFF"
+            android:textStyle="bold"
+            android:layout_margin="8dp"/>
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal"
+            android:id="@+id/Vac1"
+            android:visibility="gone"
+            >
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -123,6 +188,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Vaccination status for second dose"
+            android:id="@+id/Vac2Text"
+            android:visibility="gone"
             android:textSize ="16sp"
             android:textColor="#FFF"
             android:textStyle="bold"
@@ -132,7 +199,9 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:orientation="horizontal"
-            android:id="@+id/Vac2">
+            android:id="@+id/Vac2"
+            android:visibility="gone"
+            >
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -149,7 +218,15 @@
             android:layout_height="wrap_content"
             android:hint="Herd Number"
             android:id="@+id/HerdNum"
-            android:inputType="text"/>
+            android:visibility="gone"
+            android:inputType="number"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Time In Herd "
+            android:id="@+id/TimeInHerd"
+            android:visibility="gone"
+            android:inputType="number"/>
 
         <Button
             android:id="@+id/pictureButton"
