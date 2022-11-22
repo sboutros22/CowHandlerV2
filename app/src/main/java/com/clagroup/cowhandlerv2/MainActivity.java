@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Link activities
-                 Intent intent = new Intent(MainActivity.this,AddCow.class);
+                 Intent intent = new Intent(MainActivity.this,CowEntry.class);
                 startActivity(intent);
             }
         });

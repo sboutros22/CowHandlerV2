@@ -19,9 +19,7 @@
         <activity
             android:name=".ViewCow"
             android:exported="false" />
-        <activity
-            android:name=".AddCow"
-            android:exported="false" />
+
         <activity
             android:name=".DeleteCow"
             android:exported="false" />
