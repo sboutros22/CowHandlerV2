@@ -11,6 +11,69 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+/*
+        android:layout_height="wrap_content"
+        android:layout_weight=".8"
+        android:background="@color/gray"
+
+        tools:srcCompat="@drawable/ic_launcher_foreground"
+        android:contentDescription="@string/place_holder" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/overviewBtn"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight=".05"
+        android:text="View All Cows"
+        android:textColor="@color/sail_color"
+        app:backgroundTint="@color/green_light"
+        app:rippleColor="@color/sail_color"
+        app:strokeColor="@color/sail_color"
+        />
+
+
+    <com.google.android.material.button.MaterialButton
+         android:id="@+id/btn1"
+         android:text="@string/create_new_entry"
+         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+         android:textColor="@color/sail_color"
+         android:layout_width="match_parent"
+         app:backgroundTint="@color/green_light"
+         android:layout_height="wrap_content"
+         app:rippleColor="@color/sail_color"
+         android:layout_weight=".05"
+         app:strokeColor="@color/sail_color"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/displayEntryBtn"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight=".05"
+        android:text="@string/Search_by_CowID"
+        android:textColor="@color/sail_color"
+        app:backgroundTint="@color/green_light"
+        app:rippleColor="@color/sail_color"
+        app:strokeColor="@color/sail_color"
+        />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/deleteEntryBtn"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight=".05"
+        android:text="@string/delete_entry"
+        android:textColor="@color/black"
+        app:backgroundTint="@color/orange_light"
+        app:rippleColor="@color/sail_color"
+        app:strokeColor="@color/orange_dark"
+        />
+
+</LinearLayout>
+/*
         android:layout_height="match_parent"
         android:orientation="vertical">
 

@@ -18,6 +18,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.graphics.pdf.PdfDocument;
 import android.net.Uri;
 import android.os.Bundle;
@@ -78,7 +79,7 @@ public class ViewCow extends AppCompatActivity {
     // constant code for runtime permissions
     private static final int PERMISSION_REQUEST_CODE = 200;
 
-    private Button btn, Ebtn, Dbtn;
+    private Button Ebtn, Dbtn;
     private String cowID;
 
 
@@ -99,7 +100,6 @@ public class ViewCow extends AppCompatActivity {
         //bmp = BitmapFactory.decodeResource(getResources(), R.drawable.imageName);
         //scaledbmp = Bitmap.createScaledBitmap(bmp, 140, 140, false);
 
-        btn = findViewById(R.id.submitButton);
         Ebtn = findViewById(R.id.Ebtn);
         Dbtn = findViewById(R.id.Dbtn);
 
@@ -226,7 +226,6 @@ public class ViewCow extends AppCompatActivity {
         });
     }
     private void showCowPicture(String picturePath){
-        StorageReference storageReference = FirebaseStorage.getInstance().getReference();
         ImageView imageView = findViewById(R.id.cowImage);
         Glide.with(this)
                 .load(picturePath)
@@ -267,6 +266,8 @@ public class ViewCow extends AppCompatActivity {
         // from our page of PDF.
         Canvas pageCanvas = myPage.getCanvas();
         View contentView = findViewById(R.id.results);
+        ImageView picView = findViewById(R.id.cowImage);
+        Drawable drawable = picView.getDrawable();
 
         pageCanvas.scale(1f, 1f);
         int pageWidth = pageCanvas.getWidth();
@@ -274,8 +275,13 @@ public class ViewCow extends AppCompatActivity {
         int measureWidth = View.MeasureSpec.makeMeasureSpec(pageWidth, View.MeasureSpec.EXACTLY);
         int measuredHeight = View.MeasureSpec.makeMeasureSpec(pageHeight, View.MeasureSpec.EXACTLY);
         contentView.measure(measureWidth, measuredHeight);
-        contentView.layout(0, 0, pageWidth, pageHeight);
+        contentView.layout(0, 0, pageWidth, pageHeight/2);
         contentView.draw(pageCanvas);
+
+
+        drawable.setBounds(0, pageHeight/2, pageWidth, pageHeight);
+        drawable.draw(pageCanvas);
+
 
         // after adding all attributes to our
         // PDF file we will be finishing our page.
