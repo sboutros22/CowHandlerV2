@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     DatabaseReference databaseReference;
 
 //Create buttons
-    Button btn, btn2,btn3,btn4;
+    Button btn, btn2,btn3;
     TextView credDisplay;
 
     // Initialize nav drawer in action bar
@@ -71,9 +71,8 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 //Assign button to Create Entry view
-        btn = findViewById(R.id.btn1);
+        btn = findViewById(R.id.addCowBtn);
         btn2 = findViewById(R.id.displayEntryBtn);;
-        btn4 = findViewById(R.id.deleteEntryBtn);
         btn3 = findViewById(R.id.overviewBtn);
 
 //Create button click event
@@ -93,36 +92,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        btn4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // 1. Instantiate an <code><a href="/reference/android/app/AlertDialog.Builder.html">
-                //                                  AlertDialog.Builder</a></code> with its constructor
-                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
 
-                // 2. Chain together various setter methods to set the dialog characteristics
-                builder.setMessage("Are you sure you want to continue?")
-                        .setTitle("Confirm Deletion");
-                // Add the buttons
-                builder.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        Toast.makeText(MainActivity.this,"Confirming...",Toast.LENGTH_SHORT).show();
-                        //Link activities
-                        Intent intent = new Intent(MainActivity.this,DeleteCow.class);
-                        startActivity(intent);
-                    }
-                });
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        Toast.makeText(MainActivity.this,"Cancelling...",Toast.LENGTH_SHORT).show();
-                    }
-                });
-                // 3. Get the <code><a href="/reference/android/app/AlertDialog.html">AlertDialog</a></code>
-                // from <code><a href="/reference/android/app/AlertDialog.Builder.html#create()">create()</a></code>
-                AlertDialog dialog = builder.create();
-                dialog.show();
-            }
-        });
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -131,8 +101,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-*/
 
     }
 

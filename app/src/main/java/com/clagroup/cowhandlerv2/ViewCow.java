@@ -5,11 +5,13 @@ import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 
 import android.content.pm.PackageManager;
@@ -148,12 +150,33 @@ public class ViewCow extends AppCompatActivity {
         Dbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Link activities
-                Intent intent = new Intent(ViewCow.this, DeleteCow.class);
-                Log.d("what is cowid","cowId string: " + cowID);
-                intent.putExtra("cowBtnId",cowID);
-                Log.d("Did this send cowId to delete", "This is to see if the putExtra worked");
-                startActivity(intent);
+
+                // 1. Instantiate an <code><a href="/reference/android/app/AlertDialog.Builder.html">
+                //                                  AlertDialog.Builder</a></code> with its constructor
+                AlertDialog.Builder builder = new AlertDialog.Builder(ViewCow.this);
+
+                // 2. Chain together various setter methods to set the dialog characteristics
+                builder.setMessage("Are you sure you want to continue?")
+                        .setTitle("Confirm Deletion");
+                // Add the buttons
+                builder.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Intent intent = new Intent(ViewCow.this, DeleteCow.class);
+                        Log.d("what is cowid","cowId string: " + cowID);
+                        intent.putExtra("cowBtnId",cowID);
+                        Log.d("Did this send cowId to delete", "This is to see if the putExtra worked");
+                        startActivity(intent);
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Toast.makeText(ViewCow.this,"Cancelling...",Toast.LENGTH_SHORT).show();
+                    }
+                });
+                // 3. Get the <code><a href="/reference/android/app/AlertDialog.html">AlertDialog</a></code>
+                // from <code><a href="/reference/android/app/AlertDialog.Builder.html#create()">create()</a></code>
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
 
