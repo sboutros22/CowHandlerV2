@@ -54,17 +54,16 @@ public class MainActivity extends AppCompatActivity {
 
 //Assign button to Create Entry view
         btn = findViewById(R.id.btn1);
-        btn2 = findViewById(R.id.displayEntryBtn);
-        btn3 = findViewById(R.id.editEntryBtn);
+        btn2 = findViewById(R.id.displayEntryBtn);;
         btn4 = findViewById(R.id.deleteEntryBtn);
-        //btn5 = findViewById(R.id.overviewBtn);
+        btn3 = findViewById(R.id.overviewBtn);
 
 //Create button click event
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Link activities
-                Intent intent = new Intent(MainActivity.this,AddCow.class);
+                 Intent intent = new Intent(MainActivity.this,AddCow.class);
                 startActivity(intent);
             }
         });
@@ -73,14 +72,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //Link activities
                 Intent intent = new Intent(MainActivity.this,SearchCow.class);
-                startActivity(intent);
-            }
-        });
-        btn3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //Link activities
-                Intent intent = new Intent(MainActivity.this,EditEntry.class);
                 startActivity(intent);
             }
         });
@@ -114,8 +105,7 @@ public class MainActivity extends AppCompatActivity {
                 dialog.show();
             }
         });
-/*
-        btn5.setOnClickListener(new View.OnClickListener() {
+        btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Link activities
@@ -123,7 +113,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-*/
     }
 
 }

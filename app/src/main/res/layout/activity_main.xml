@@ -18,6 +18,20 @@
         android:contentDescription="@string/place_holder" />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/overviewBtn"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight=".05"
+        android:text="View All Cows"
+        android:textColor="@color/sail_color"
+        app:backgroundTint="@color/green_light"
+        app:rippleColor="@color/sail_color"
+        app:strokeColor="@color/sail_color"
+        />
+
+
+    <com.google.android.material.button.MaterialButton
          android:id="@+id/btn1"
          android:text="@string/create_new_entry"
          style="@style/Widget.MaterialComponents.Button.OutlinedButton"
@@ -42,18 +56,6 @@
         app:strokeColor="@color/sail_color"
         />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/editEntryBtn"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight=".05"
-        android:text="@string/edit_entry"
-        android:textColor="@color/sail_color"
-        app:backgroundTint="@color/green_light"
-        app:rippleColor="@color/sail_color"
-        app:strokeColor="@color/sail_color"
-        />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/deleteEntryBtn"
