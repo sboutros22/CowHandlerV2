@@ -6,29 +6,30 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
-import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
-import java.util.HashMap;
-import java.util.Map;
+
 /*
 This class handles the process of getting manual user input
 for a cow within the Activity
@@ -40,13 +41,14 @@ public class CowEntry extends AppCompatActivity {
     private Button btn, picBtn;
     private FirebaseFirestore db;
     public FirebaseUser currentUser;
-    private EditText CowId, Species, Descr, BirthDt, Mother, Father, Weight, Age;
-    private RadioGroup Vac1,Vac2, Gender;
+    public TextView GenderText, Vac1Text, Vac2Text, BreedableText;
+    private EditText CowId, Species, Descr, BirthDt, Mother, Father, Weight, Age, TimeInHerd, NumOfBirths, HerdNum;
+    private RadioGroup Vac1,Vac2, Gender,breeder;
     private ImageView cowPic;
     StorageReference storageRef;
     private FirebaseStorage storage = FirebaseStorage.getInstance();
     static final int REQUEST_IMAGE_CAPTURE = 1;
-    private String pathToCowPicture;
+    private String pathToCowPicture, sex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,41 +68,136 @@ public class CowEntry extends AppCompatActivity {
                     startActivityForResult(picIntent,REQUEST_IMAGE_CAPTURE);
             }
         });
+        Spinner dropdown =findViewById(R.id.updateField);
+        //create a list of items for the spinner.
+        String[] items = new String[]{"Calf", "Cow", "Bull"};
+        //create an adapter to describe how the items are displayed, adapters are used in several places in android.
+        //There are multiple variations of this, but this is the basic variant.
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        //set the spinners adapter to the previously created one.
+        dropdown.setAdapter(adapter);
+        dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                switch (dropdown.getSelectedItem().toString()) {
+                    case "Calf":
+                        Log.d("Testing Calf case", "Is the Calf case being selected when chosen?");
 
-        btn = findViewById(R.id.submitButton);
-//Create button click event
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                currentUser = FirebaseAuth.getInstance().getCurrentUser();
-                db = FirebaseFirestore.getInstance();
-
-                String cowId = CowId.getText().toString();
-                String species = Species.getText().toString();
-                int genders = Gender.getCheckedRadioButtonId();
-                RadioButton gender = findViewById(genders);
-                String sex = gender.getText().toString();
-                String birthdayDt = BirthDt.getText().toString();
-                int weight = Integer.parseInt(Weight.getText().toString());
-                int age = Integer.parseInt(Age.getText().toString());
-                String mother = Mother.getText().toString();
-                String father = Father.getText().toString();
-                String Description = Descr.getText().toString();
-                int vaccination1 = Vac1.getCheckedRadioButtonId();
-                int vaccination2 = Vac2.getCheckedRadioButtonId();
-                RadioButton vacCheck1 = findViewById(vaccination1);
-                String vac1 = vacCheck1.getText().toString();
-                RadioButton vacCheck2 = findViewById(vaccination2);
-                String vac2 = vacCheck2.getText().toString();
-                pathToCowPicture = "images/" + currentUser.getUid() + "/" + cowId + "/picture.jpg";
-                Log.d("Submit button check", "did this work at all");
-
-                NewCow Cow = new NewCow(cowId, birthdayDt, age, species, weight, sex, Description, vac1, vac2, mother, father, pathToCowPicture);
-                uploadCow(Cow, cowId);
+                        // vaccineValue.setVisibility(View.GONE);
+                        CowId.setVisibility(View.VISIBLE);
+                        Species.setVisibility(View.VISIBLE);
+                        Descr.setVisibility(View.VISIBLE);
+                        BirthDt.setVisibility(View.VISIBLE);
+                        Mother.setVisibility(View.VISIBLE);
+                        Father.setVisibility(View.VISIBLE);
+                        Weight.setVisibility(View.VISIBLE);
+                        Age.setVisibility(View.VISIBLE);
+                        Vac1.setVisibility(View.VISIBLE);
+                        Vac2.setVisibility(View.VISIBLE);
+                        Gender.setVisibility(View.VISIBLE);
+                        cowPic.setVisibility(View.VISIBLE);
+                        breeder.setVisibility(View.VISIBLE);
+                        TimeInHerd.setVisibility(View.VISIBLE);
+                        HerdNum.setVisibility(View.VISIBLE);
+                        NumOfBirths.setVisibility(View.VISIBLE);
+                        GenderText.setVisibility(View.VISIBLE);
+                        Vac1Text.setVisibility(View.VISIBLE);
+                        Vac2Text.setVisibility(View.VISIBLE);
+                        BreedableText.setVisibility(View.VISIBLE);
+                        break;
+                    case "Cow":
+                        Log.d("Testing Cow case", "Is the Cow case being selected when chosen?");
+                        CowId.setVisibility(View.VISIBLE);
+                        Species.setVisibility(View.VISIBLE);
+                        Descr.setVisibility(View.VISIBLE);
+                        BirthDt.setVisibility(View.VISIBLE);
+                        Mother.setVisibility(View.VISIBLE);
+                        Father.setVisibility(View.VISIBLE);
+                        Weight.setVisibility(View.VISIBLE);
+                        Age.setVisibility(View.VISIBLE);
+                        Vac1.setVisibility(View.VISIBLE);
+                        Vac2.setVisibility(View.VISIBLE);
+                        Gender.setVisibility(View.GONE);
+                        cowPic.setVisibility(View.VISIBLE);
+                        breeder.setVisibility(View.GONE);
+                        TimeInHerd.setVisibility(View.VISIBLE);
+                        HerdNum.setVisibility(View.VISIBLE);
+                        NumOfBirths.setVisibility(View.VISIBLE);
+                        GenderText.setVisibility(View.GONE);
+                        Vac1Text.setVisibility(View.VISIBLE);
+                        Vac2Text.setVisibility(View.VISIBLE);
+                        BreedableText.setVisibility(View.GONE);
+                        sex = "Female";
+                        break;
+                    case "Bull":
+                        Log.d("Testing Bull case", "Is the Bull case being selected when chosen?");
+                        CowId.setVisibility(View.VISIBLE);
+                        Species.setVisibility(View.VISIBLE);
+                        Descr.setVisibility(View.VISIBLE);
+                        BirthDt.setVisibility(View.VISIBLE);
+                        Mother.setVisibility(View.VISIBLE);
+                        Father.setVisibility(View.VISIBLE);
+                        Weight.setVisibility(View.VISIBLE);
+                        Age.setVisibility(View.VISIBLE);
+                        Vac1.setVisibility(View.VISIBLE);
+                        Vac2.setVisibility(View.VISIBLE);
+                        Gender.setVisibility(View.GONE);
+                        cowPic.setVisibility(View.VISIBLE);
+                        TimeInHerd.setVisibility(View.VISIBLE);
+                        HerdNum.setVisibility(View.VISIBLE);
+                        NumOfBirths.setVisibility(View.GONE);
+                        GenderText.setVisibility(View.GONE);
+                        Vac1Text.setVisibility(View.VISIBLE);
+                        Vac2Text.setVisibility(View.VISIBLE);
+                        BreedableText.setVisibility(View.GONE);
+                        sex = "Male";
+                        break;
+                }
             }
-
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                return;
+            }
         });
 
+                btn = findViewById(R.id.submitButton);
+//Create button click event
+        btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        currentUser = FirebaseAuth.getInstance().getCurrentUser();
+                        db = FirebaseFirestore.getInstance();
+
+                        String cowId = CowId.getText().toString();
+                        String species = Species.getText().toString();
+                        int genders = Gender.getCheckedRadioButtonId();
+                        RadioButton gender = findViewById(genders);
+                        sex = gender.getText().toString();
+                        int Breeder = breeder.getCheckedRadioButtonId();
+                        RadioButton breedable = findViewById(Breeder);
+                        String Breedable = breedable.getText().toString();
+                        String birthdayDt = BirthDt.getText().toString();
+                        int weight = Integer.parseInt(Weight.getText().toString());
+                        int age = Integer.parseInt(Age.getText().toString());
+                        int numOffspring = Integer.parseInt(NumOfBirths.getText().toString());
+                        int timeInHerd = Integer.parseInt(TimeInHerd.getText().toString());
+                        String mother = Mother.getText().toString();
+                        String father = Father.getText().toString();
+                        String Description = Descr.getText().toString();
+                        int vaccination1 = Vac1.getCheckedRadioButtonId();
+                        int vaccination2 = Vac2.getCheckedRadioButtonId();
+                        RadioButton vacCheck1 = findViewById(vaccination1);
+                        String vac1 = vacCheck1.getText().toString();
+                        RadioButton vacCheck2 = findViewById(vaccination2);
+                        String vac2 = vacCheck2.getText().toString();
+                        int herdNumber = Integer.parseInt(HerdNum.getText().toString());
+                        pathToCowPicture = "images/" + currentUser.getUid() + "/" + cowId + "/picture.jpg";
+                        Log.d("Submit button check", "did this work at all");
+
+                        NewCow Cow = new NewCow(cowId, birthdayDt, age, species, weight, sex, Description, vac1, vac2, Breedable, numOffspring, mother, father, herdNumber, timeInHerd, pathToCowPicture);
+                        uploadCow(Cow, cowId);
+
+                    }
+
+                });
     }
 
     public void uploadCow(NewCow Cow, String cowId) {
@@ -136,6 +233,15 @@ public class CowEntry extends AppCompatActivity {
         Vac2 = findViewById(R.id.Vac2);
         Gender = findViewById(R.id.Gender);
         cowPic = findViewById(R.id.cowImage);
+        breeder = findViewById(R.id.breeder);
+        TimeInHerd = findViewById(R.id.TimeInHerd);
+        HerdNum = findViewById(R.id.HerdNum);
+        NumOfBirths = findViewById(R.id.NumOfBirths);
+        GenderText = findViewById(R.id.GenderText);
+        Vac1Text = findViewById(R.id.Vac1Text);
+        Vac2Text = findViewById(R.id.Vac2Text);
+        BreedableText = findViewById(R.id.BreedableText);
+
     }
 
     @Override

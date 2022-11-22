@@ -19,11 +19,11 @@ public class NewCow {
     private String Vac1;
     private String Vac2;
     private String gender;
-    private int  age, weight;
+    private String breedable;
+    private int  age, weight, herdNumber, timeInHerd, numOffspring;
     private String pathToCowPicture;
 
-
-    public NewCow(String cowId, String birthdayDt, int age, String species, int weight, String gender, String description, String vac1, String vac2, String mother, String father, String pathToCowPicture) {
+    public NewCow(String cowId, String birthdayDt, int age, String species, int weight, String gender, String description, String vac1, String vac2, String breedable, int numOffspring, String mother, String father, int herdNumber, int timeInHerd, String pathToCowPicture) {
         this.CowId = cowId;
         this.Species = species;
         this.Description = description;
@@ -33,8 +33,12 @@ public class NewCow {
         this.age = age;
         this.weight = weight;
         this.gender = gender;
+        this.numOffspring = numOffspring;
         this.mother = mother;
         this.father = father;
+        this.breedable = breedable;
+        this.herdNumber = herdNumber;
+        this.timeInHerd = timeInHerd;
         this.pathToCowPicture = pathToCowPicture;
     }
 
@@ -126,12 +130,43 @@ public class NewCow {
         this.weight = weight;
     }
 
-    public String getpathToCowPicture() {
+    public String getBreedable() {
+        return breedable;
+    }
+
+    public void setBreedable(String breedable) {
+        this.breedable = breedable;
+    }
+
+    public int getHerdNumber() {
+        return herdNumber;
+    }
+
+    public void setHerdNumber(int herdNumber) {
+        this.herdNumber = herdNumber;
+    }
+
+    public int getTimeInHerd() {
+        return timeInHerd;
+    }
+
+    public void setTimeInHerd(int timeInHerd) {
+        this.timeInHerd = timeInHerd;
+    }
+
+    public String getPathToCowPicture() {
         return pathToCowPicture;
     }
 
-    public void setpathToCowPicture(String pathToCowPicture) {
+    public void setPathToCowPicture(String pathToCowPicture) {
         this.pathToCowPicture = pathToCowPicture;
+    }
+    public int getNumOffspring() {
+        return numOffspring;
+    }
+
+    public void setNumOffspring(int numOffspring) {
+        this.numOffspring = numOffspring;
     }
 
 }
