@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
     Button btn, btn2,btn3;
     TextView credDisplay;
 
-    // Initialize nav drawer in action bar
     public DrawerLayout drawerLayout;
     public ActionBarDrawerToggle actionBarDrawerToggle;
 
@@ -52,10 +51,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Get firebase user email and display
+        //Get firebase user email and assign to layout string
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
         String user_cred = currentUser.getEmail().toString();
-
         credDisplay = findViewById(R.id.credView);
         credDisplay.setText(user_cred);
         // drawer layout instance to toggle the menu icon to open
@@ -119,19 +117,3 @@ public class MainActivity extends AppCompatActivity {
     }
 
 }
-
-/*
-Don't currently know if needed or not
-
-<com.google.android.material.button.MaterialButton
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight=".05"
-        app:backgroundTint="@color/green_light"
-        android:id="@+id/overviewBtn"
-        app:rippleColor="@color/sail_color"
-        android:textColor="@color/sail_color"
-        android:text="@string/View_All_Cows"
-        app:strokeColor="@color/sail_color"/>
- */
