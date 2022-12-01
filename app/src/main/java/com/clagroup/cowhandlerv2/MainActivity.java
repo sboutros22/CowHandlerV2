@@ -20,10 +20,16 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import android.view.Menu;
 
 /*
 This class controls the landing page that the user arrives to after signing in.
@@ -37,8 +43,6 @@ public class MainActivity extends AppCompatActivity {
     public FirebaseUser currentUser;
 
     DatabaseReference databaseReference;
-
-//Create buttons
     Button btn, btn2,btn3;
     TextView credDisplay;
 
@@ -51,11 +55,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Get firebase user email and assign to layout string
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
         String user_cred = currentUser.getEmail().toString();
-        credDisplay = findViewById(R.id.credView);
-        credDisplay.setText(user_cred);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View hView = navigationView.getHeaderView(0);
+        TextView nav_user = (TextView) hView.findViewById(R.id.textView);
+        nav_user.setText(user_cred);
+
         // drawer layout instance to toggle the menu icon to open
         // drawer and back button to close drawer
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -64,16 +70,15 @@ public class MainActivity extends AppCompatActivity {
         // to toggle the button
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
-
         // to make the Navigation drawer icon always appear on the action bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-//Assign button to Create Entry view
+        //Assign button to Create Entry view
         btn = findViewById(R.id.addCowBtn);
         btn2 = findViewById(R.id.displayEntryBtn);;
         btn3 = findViewById(R.id.overviewBtn);
 
-//Create button click event
+        //Create button click event
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
