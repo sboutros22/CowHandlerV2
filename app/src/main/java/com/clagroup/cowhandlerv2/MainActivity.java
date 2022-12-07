@@ -66,9 +66,9 @@ public class MainActivity extends AppCompatActivity {
                 public void onClick(DialogInterface dialog, int id) {
                     Toast.makeText(MainActivity.this, "Signing out!", Toast.LENGTH_SHORT).show();
                     //Link activities
+                    FirebaseAuth.getInstance().signOut();
                     Intent intent = new Intent(MainActivity.this,LoginActivity.class);
                     startActivity(intent);
-                    finish();
                 }
             });
             builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
