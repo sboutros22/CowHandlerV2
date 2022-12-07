@@ -60,7 +60,9 @@ public class MainActivity extends AppCompatActivity {
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         View hView = navigationView.getHeaderView(0);
         TextView nav_user = (TextView) hView.findViewById(R.id.textView);
+        TextView nav_displayName = (TextView) hView.findViewById(R.id.displayTextView);
         nav_user.setText(user_cred);
+        nav_displayName.setText(currentUser.getDisplayName());
 
         // drawer layout instance to toggle the menu icon to open
         // drawer and back button to close drawer
@@ -120,5 +122,7 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
 
 }

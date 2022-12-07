@@ -12,8 +12,10 @@
         android:layout_height="wrap_content"
         android:src="@android:drawable/sym_def_app_icon"/>
     <TextView
+        android:id="@+id/displayTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="@android:dimen/app_icon_size"
         android:text="@string/place_holder"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
     <TextView
