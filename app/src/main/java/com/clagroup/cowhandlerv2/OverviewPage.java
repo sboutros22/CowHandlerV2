@@ -105,16 +105,6 @@ public class OverviewPage extends Activity {
                     startActivity(intent);
                 }
             });
-            btnTag.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View view) {
-                    Intent intent = new Intent(OverviewPage.this,DeleteCow.class);
-                    String cowBtn = btnTag.getText().toString();
-                    intent.putExtra("cowBtnId",cowBtn);
-                    startActivity(intent);
-                    return true;
-                }
-            });
 
         }
     }
