@@ -71,41 +71,14 @@ public class DeleteCow extends AppCompatActivity {
                 db = FirebaseFirestore.getInstance();
 
                 String cowId = CowId.getText().toString();
-/*
-                // 1. Instantiate an <code><a href="/reference/android/app/AlertDialog.Builder.html">
-                //                                  AlertDialog.Builder</a></code> with its constructor
-                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-
-                // 2. Chain together various setter methods to set the dialog characteristics
-                builder.setMessage("Are you sure you want to continue?")
-                        .setTitle("Confirm Deletion");
-                // Add the buttons
-                builder.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        Toast.makeText(DeleteCow.this,"Confirming...",Toast.LENGTH_SHORT).show();
-                        //Link activities
-                        deleteCow(cowId);
-                    }
-                });
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        Toast.makeText(DeleteCow.this,"Cancelling...",Toast.LENGTH_SHORT).show();
-                    }
-                });
-                // 3. Get the <code><a href="/reference/android/app/AlertDialog.html">AlertDialog</a></code>
-                // from <code><a href="/reference/android/app/AlertDialog.Builder.html#create()">create()</a></code>
-                AlertDialog dialog = builder.create();
-                dialog.show();
-*/
                 deleteCow(cowId);
-
-
             }
         });
 
 
     }
-
+    // gets all the information from the database that is associated with the cowId
+    // It also gets the image string as it also needs to be removed
     public void deleteCow(String cowId) {
         DocumentReference docRef = db.collection(currentUser.getDisplayName()).document(cowId);
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -118,6 +91,8 @@ public class DeleteCow extends AppCompatActivity {
                         StorageReference storageRef = storage.getReference();
                         storageRef.child(picPath).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
+                            // If the cowId is real and the ID is found with all the corresponding information it calls another
+                            // function called deleteCowIn for that will actually delete the cow
                             public void onSuccess(Void aVoid) {
                                 Log.d("Photo deletion", "successfully deleted picture.", task.getException());
                                 deleteCowInfo(cowId);
@@ -140,7 +115,7 @@ public class DeleteCow extends AppCompatActivity {
             }
         });
     }
-
+// this removes the actual cowId and all the information that is with it
     public void deleteCowInfo(String cowId) {
         db.collection(currentUser.getDisplayName()).document(cowId)
                 .delete()

@@ -29,6 +29,7 @@ public class SearchCow extends AppCompatActivity {
         btn = findViewById(R.id.submitButton);
 
         //Create button click event
+        // Sends users from searchCow to the viewCow pages of the app
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -40,7 +41,7 @@ public class SearchCow extends AppCompatActivity {
             }
         });
     }
-
+// sets the cowId before user inputs
     private void initializeViews() {
         CowId = findViewById(R.id.cowId);
     }
