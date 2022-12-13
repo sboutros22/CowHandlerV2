@@ -44,6 +44,10 @@ public class OverviewPage extends Activity {
         generatePDFbtn = findViewById(R.id.pdfButton);
 
         generatePDFbtn.setOnClickListener(new View.OnClickListener() {
+            // This is the button to view individual cows it is the used when a user clicks on the cowId
+            // It will take the user from the OverviewPage to the viewCow page
+            // It also sends the cowId that is being viewed so it will automatically
+            // Pull the information of that cow selected
             @Override
             public void onClick(View v) {
                 for (int i = 0; i < ids.size(); i++) {
@@ -57,7 +61,7 @@ public class OverviewPage extends Activity {
             }
         });
     }
-
+// This sets up all the cowId onto the actual page
     private void viewAllCows() {
         db.collection(currentUser.getDisplayName())
                 .get()
@@ -81,7 +85,7 @@ public class OverviewPage extends Activity {
                     }
                 });
     }
-
+// This makes each cowId as a button that can pressed to access the view of the cow
     public void createCowBtns(ArrayList<String> ids) {
         LinearLayout layout = (LinearLayout) findViewById(R.id.linear_layout_tags);
         for (int i = 0; i < ids.size(); i++) {

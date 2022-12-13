@@ -119,7 +119,8 @@ public class EditEntry extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
 
-
+// this sets up the drop down box for the edit page
+                // each case has its own respected values that are updated based on the type of inputs they are
                 String updateValue;
                 String updateField = dropdown.getSelectedItem().toString().toLowerCase();
                 switch(updateField){
@@ -178,7 +179,8 @@ public class EditEntry extends AppCompatActivity {
                     }
                 });
     }
-
+// gets the current value and displays it
+    // pulls from the database
     public void getCurrentValue(String cowId, String key){
         DocumentReference docRef = db.collection(currentUser.getDisplayName()).document(cowId);
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -211,7 +213,7 @@ public class EditEntry extends AppCompatActivity {
             }
         });
     }
-
+// used for changing radio options from yes to no or vis-versa
     private void selectCurrentButton(){
         if(currentValueDisplay.getText() == "Yes"){
             RadioButton b = (RadioButton) findViewById(R.id.Yes);
@@ -222,7 +224,7 @@ public class EditEntry extends AppCompatActivity {
             b.setChecked(true);
         }
     }
-
+// Sets the values before user inputs
     private void initializeViews() {
         vaccineValue = findViewById(R.id.Vaccine);
         newValue = findViewById(R.id.updateValue);

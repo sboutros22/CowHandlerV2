@@ -37,6 +37,9 @@ for a cow within the Activity
 Main -> AddCow -> CowEntry
  */
 public class CowEntry extends AppCompatActivity {
+/*
+These are the constants and variable that will be used
+ */
 
     private Button btn, picBtn;
     private FirebaseFirestore db;
@@ -75,14 +78,17 @@ public class CowEntry extends AppCompatActivity {
         //There are multiple variations of this, but this is the basic variant.
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         //set the spinners adapter to the previously created one.
+        // Creates the drop down box
         dropdown.setAdapter(adapter);
+        // There are three options in the dropdown box
         dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 switch (dropdown.getSelectedItem().toString()) {
                     case "Calf":
                         Log.d("Testing Calf case", "Is the Calf case being selected when chosen?");
+                        // All the variables are currently hidden and will be set to visible once the case is selected
+                        // Revealing the inputs a user can add for that case
 
-                        // vaccineValue.setVisibility(View.GONE);
                         CowId.setVisibility(View.VISIBLE);
                         Species.setVisibility(View.VISIBLE);
                         Descr.setVisibility(View.VISIBLE);
@@ -165,6 +171,7 @@ public class CowEntry extends AppCompatActivity {
                     public void onClick(View view) {
                         currentUser = FirebaseAuth.getInstance().getCurrentUser();
                         db = FirebaseFirestore.getInstance();
+                        // Each of these correspond with an input the user puts into the app
 
                         String cowId = CowId.getText().toString();
                         String species = Species.getText().toString();
@@ -192,26 +199,33 @@ public class CowEntry extends AppCompatActivity {
                         pathToCowPicture = "images/" + currentUser.getUid() + "/" + cowId + "/picture.jpg";
                         Log.d("Submit button check", "did this work at all");
 
+                        // Sends all the information that was inputted to NewCow Cow to create a new entry
+                        // Cow is now a string of information
                         NewCow Cow = new NewCow(cowId, birthdayDt, age, species, weight, sex, Description, vac1, vac2, Breedable, numOffspring, mother, father, herdNumber, timeInHerd, pathToCowPicture);
+                        // Sends all the information to the uploadCow function that will send that string to Firebase Firestore
                         uploadCow(Cow, cowId);
 
                     }
 
                 });
     }
-
+// send the information of the cow and saves it in the database
+    // uses the cowID as the name of that line of data
+    // cowId will be used as a way to pull or push new information from the app
     public void uploadCow(NewCow Cow, String cowId) {
         db.collection(currentUser.getDisplayName()).document(cowId)
                 .set(Cow)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
+                        // calls the uploadPhoto function to input an image into the database
                         uploadPhoto();
                         Log.d("Cow added Successfully", "DocumentSnapshot successfully written!");;
 
                         startActivity(new Intent(CowEntry.this, MainActivity.class));
                     }
                 })
+                // Is a check to see if the connection to firebase failed or if failed to send
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
@@ -220,6 +234,8 @@ public class CowEntry extends AppCompatActivity {
                 });
 
     }
+    // The initialized values for the variables
+    // Necessary to set up the values for late input of information from users
     private void initializeViews() {
         CowId = findViewById(R.id.cowId);
         Species = findViewById(R.id.Species);
@@ -243,7 +259,8 @@ public class CowEntry extends AppCompatActivity {
         BreedableText = findViewById(R.id.BreedableText);
 
     }
-
+    // Sets up the image inputting option
+    // Used for taking pictures
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -253,7 +270,7 @@ public class CowEntry extends AppCompatActivity {
             cowPic.setImageBitmap(imageBitmap);
         }
     }
-
+// Used for pushing photo into Firestore database
     private void uploadPhoto(){
         Bitmap bitmap = ((BitmapDrawable) cowPic.getDrawable()).getBitmap();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
